@@ -1,0 +1,15 @@
+INFO:root:Documentation query: Generate API docs for user login
+INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো
+INFO:root:Documentation query: Generate API docs for user login
+INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো
+INFO:root:Documentation query: Generate API docs for user login
+INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো
+INFO:root:Documentation query: Generate API docs for login
+INFO:root:Documentation query: Generate API docs for user login
+INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো
+2025-09-30 06:11:32,132 - INFO - {"ts": 1759191092.1243103, "session": "3224f93a-6b18-4ba2-bd66-ff73c3c03af2", "prompt": "Generate API docs for login", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,145 - INFO - {"ts": 1759191092.136698, "session": "chatcmpl-3ed5d28b-c73c-42e8-9d53-5e249e2a7a8c", "prompt": "\u09b2\u0997\u0987\u09a8 \u098f\u09a8\u09cd\u09a1\u09aa\u09af\u09bc\u09c7\u09a8\u09cd\u099f\u09c7\u09b0 \u09a1\u0995 \u09b2\u09bf\u0996\u09cb", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,068 - INFO - {"ts": 1759191376.0596817, "session": "20892f7e-78ac-4728-9961-bcfe17c1b472", "prompt": "Generate API docs for login", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,081 - INFO - {"ts": 1759191376.0730884, "session": "chatcmpl-f3aa3d93-5a54-4144-a122-e81aeba4c158", "prompt": "\u09b2\u0997\u0987\u09a8 \u098f\u09a8\u09cd\u09a1\u09aa\u09af\u09bc\u09c7\u09a8\u09cd\u099f\u09c7\u09b0 \u09a1\u0995 \u09b2\u09bf\u0996\u09cb", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,247 - INFO - {"ts": 1759193226.2381742, "session": "a12dcba6-23d3-4577-b8fe-9786005778aa", "prompt": "Generate API docs for login", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,257 - INFO - {"ts": 1759193226.25035, "session": "chatcmpl-e8d68835-35e8-424a-8aa9-f49eddec85ca", "prompt": "\u09b2\u0997\u0987\u09a8 \u098f\u09a8\u09cd\u09a1\u09aa\u09af\u09bc\u09c7\u09a8\u09cd\u099f\u09c7\u09b0 \u09a1\u0995 \u09b2\u09bf\u0996\u09cb", "response_len": 1172, "model": "doc-generator-v1", "cached": false, "duration_ms": 0}

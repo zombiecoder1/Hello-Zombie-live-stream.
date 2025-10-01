@@ -1,0 +1,15 @@
+INFO:root:Code generation query: Write a Python function to add two numbers
+INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো
+INFO:root:Code generation query: Write a Python function to add two numbers
+INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো
+INFO:root:Code generation query: Write a Python function to add two numbers
+INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো
+INFO:root:Code generation query: Write a hello world function
+INFO:root:Code generation query: Write a Python function to add two numbers
+INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো
+2025-09-30 06:11:32,069 - INFO - {"ts": 1759191092.052002, "session": "101eb080-5b34-40fa-860d-36fe4f69dcf7", "prompt": "Write a Python function to add two numbers", "response_len": 275, "model": "code-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,094 - INFO - {"ts": 1759191092.0822008, "session": "chatcmpl-688d424f-ac43-440c-a18c-68b97b092cbb", "prompt": "\u09aa\u09be\u0987\u09a5\u09a8\u09c7 \u09ab\u09be\u0987\u09b2\u09c7 \u09b2\u09c7\u0996\u09be \u09aa\u09a1\u09bc\u09be\u09b0 \u0995\u09cb\u09a1 \u09b2\u09bf\u0996\u09cb", "response_len": 341, "model": "code-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,024 - INFO - {"ts": 1759191376.017303, "session": "4d78dbea-3fc5-4e45-9197-53e6a5265ae2", "prompt": "Write a Python function to add two numbers", "response_len": 275, "model": "code-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,033 - INFO - {"ts": 1759191376.0270061, "session": "chatcmpl-776b3afb-cc0c-4faf-854b-c8fe9442d3ff", "prompt": "\u09aa\u09be\u0987\u09a5\u09a8\u09c7 \u09ab\u09be\u0987\u09b2\u09c7 \u09b2\u09c7\u0996\u09be \u09aa\u09a1\u09bc\u09be\u09b0 \u0995\u09cb\u09a1 \u09b2\u09bf\u0996\u09cb", "response_len": 341, "model": "code-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,200 - INFO - {"ts": 1759193226.189417, "session": "610b2d42-3c20-41ba-8c66-233e1a6740e5", "prompt": "Write a Python function to add two numbers", "response_len": 275, "model": "code-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,214 - INFO - {"ts": 1759193226.2063828, "session": "chatcmpl-c80e044d-9947-4501-911c-ed70920fe213", "prompt": "\u09aa\u09be\u0987\u09a5\u09a8\u09c7 \u09ab\u09be\u0987\u09b2\u09c7 \u09b2\u09c7\u0996\u09be \u09aa\u09a1\u09bc\u09be\u09b0 \u0995\u09cb\u09a1 \u09b2\u09bf\u0996\u09cb", "response_len": 341, "model": "code-generator-v1", "cached": false, "duration_ms": 0}

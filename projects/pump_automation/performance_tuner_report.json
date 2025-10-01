@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-09-13T12:40:58.700619",
+  "tuning_database": "performance_tuner.db",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "tuning_interval": 30,
+  "performance_thresholds": {
+    "cpu_usage": 80.0,
+    "memory_usage": 85.0,
+    "disk_usage": 90.0,
+    "response_time": 2.0
+  },
+  "tuner_status": {
+    "timestamp": "2025-09-13T12:40:58.700606",
+    "agent_metrics": {
+      "programming": {
+        "cpu_usage": 0,
+        "memory_usage": 0,
+        "disk_usage": 0,
+        "performance_score": 0
+      },
+      "bestpractices": {
+        "cpu_usage": 0,
+        "memory_usage": 0,
+        "disk_usage": 0,
+        "performance_score": 0
+      },
+      "verifier": {
+        "cpu_usage": 0,
+        "memory_usage": 0,
+        "disk_usage": 0,
+        "performance_score": 0
+      },
+      "conversational": {
+        "cpu_usage": 0,
+        "memory_usage": 0,
+        "disk_usage": 0,
+        "performance_score": 0
+      },
+      "ops": {
+        "cpu_usage": 0,
+        "memory_usage": 0,
+        "disk_usage": 0,
+        "performance_score": 0
+      }
+    },
+    "pending_recommendations": {},
+    "tuning_active": true
+  },
+  "system_status": "active"
+}

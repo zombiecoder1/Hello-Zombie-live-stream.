@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-09-13T12:40:53.055353",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "memory_base_path": "agents/memory",
+  "config_base_path": "agents/config",
+  "isolation_status": "ENABLED"
+}

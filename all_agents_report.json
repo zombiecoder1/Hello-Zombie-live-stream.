@@ -1,0 +1,402 @@
+{
+  "timestamp": "2025-09-30T05:24:12.503948",
+  "agents": {
+    "bengali_nlp": {
+      "url": "http://127.0.0.1:8002",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"bengali-nlp\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "বাংলায় একটি ছোট গল্প লেখো",
+          "status": "ok",
+          "response_time_ms": 4.09,
+          "response": {
+            "query": "বাংলায় একটি ছোট গল্প লেখো",
+            "response": "বাংলা প্রশ্নের উত্তর: বাংলায় একটি ছোট গল্প লেখো - এটি একটি বাংলা ভাষার প্রক্রিয়াকরণের উদাহরণ।",
+            "language": "bengali",
+            "confidence": 0.95,
+            "processing_time": "0.15s",
+            "model": "bengali-nlp-v1"
+          }
+        },
+        {
+          "question": "Write a Bengali proverb with meaning",
+          "status": "ok",
+          "response_time_ms": 6.16,
+          "response": {
+            "query": "Write a Bengali proverb with meaning",
+            "response": "English query response: Write a Bengali proverb with meaning - This is processed by Bengali NLP agent.",
+            "language": "bengali",
+            "confidence": 0.95,
+            "processing_time": "0.15s",
+            "model": "bengali-nlp-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো\n",
+        "INFO:root:Query received: Write a Bengali proverb with meaning\n",
+        "INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো\n",
+        "INFO:root:Query received: Write a Bengali proverb with meaning\n",
+        "INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো\n",
+        "INFO:root:Query received: Write a Bengali proverb with meaning\n"
+      ]
+    },
+    "code_generation": {
+      "url": "http://127.0.0.1:8003",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"code-generation\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Write a Python function to add two numbers",
+          "status": "ok",
+          "response_time_ms": 2.61,
+          "response": {
+            "query": "Write a Python function to add two numbers",
+            "code": "def add(a, b):\n    \"\"\"Add two numbers and return the result\"\"\"\n    return a + b\n\n# Example usage\nresult = add(5, 3)\nprint(f\"5 + 3 = {result}\")",
+            "language": "python",
+            "explanation": "Generated code for: Write a Python function to add two numbers",
+            "confidence": 0.92,
+            "processing_time": "0.18s",
+            "model": "code-generator-v1"
+          }
+        },
+        {
+          "question": "পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো",
+          "status": "ok",
+          "response_time_ms": 3.02,
+          "response": {
+            "query": "পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো",
+            "code": "# Print numbers from 1 to 10 using a loop\nfor i in range(1, 11):\n    print(i)\n\n# Alternative with while loop\ni = 1\nwhile i <= 10:\n    print(i)\n    i += 1",
+            "language": "javascript",
+            "explanation": "Generated code for: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো",
+            "confidence": 0.92,
+            "processing_time": "0.18s",
+            "model": "code-generator-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Code generation query: Write a Python function to add two numbers\n",
+        "INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো\n",
+        "INFO:root:Code generation query: Write a Python function to add two numbers\n",
+        "INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো\n",
+        "INFO:root:Code generation query: Write a Python function to add two numbers\n",
+        "INFO:root:Code generation query: পাইথনে লুপ দিয়ে ১ থেকে ১০ পর্যন্ত প্রিন্ট করো\n"
+      ]
+    },
+    "code_review": {
+      "url": "http://127.0.0.1:8004",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"code-review\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Review this code: def foo(x): return x+1",
+          "status": "ok",
+          "response_time_ms": 2.92,
+          "response": {
+            "query": "Review this code: def foo(x): return x+1",
+            "review": {
+              "overall_score": 8.5,
+              "issues": [
+                {
+                  "type": "style",
+                  "severity": "low",
+                  "message": "Function name could be more descriptive",
+                  "suggestion": "Use 'increment' instead of 'foo'"
+                }
+              ],
+              "suggestions": [
+                "Add type hints for better code clarity",
+                "Consider adding docstring for function documentation",
+                "Add input validation for edge cases"
+              ],
+              "positive_feedback": [
+                "Code is concise and readable",
+                "Proper function structure",
+                "Clear return statement"
+              ],
+              "security_analysis": {
+                "vulnerabilities": [],
+                "recommendations": [
+                  "No security issues detected in this simple function",
+                  "Consider input validation for production use"
+                ]
+              }
+            },
+            "code_analyzed": "def foo(x): return x+1",
+            "confidence": 0.88,
+            "processing_time": "0.12s",
+            "model": "code-reviewer-v1"
+          }
+        },
+        {
+          "question": "কোডের সিকিউরিটি ইস্যু আছে কিনা বলো",
+          "status": "ok",
+          "response_time_ms": 3.95,
+          "response": {
+            "query": "কোডের সিকিউরিটি ইস্যু আছে কিনা বলো",
+            "review": {
+              "overall_score": 8.5,
+              "issues": [
+                {
+                  "type": "style",
+                  "severity": "low",
+                  "message": "Function name could be more descriptive",
+                  "suggestion": "Use 'increment' instead of 'foo'"
+                }
+              ],
+              "suggestions": [
+                "Add type hints for better code clarity",
+                "Consider adding docstring for function documentation",
+                "Add input validation for edge cases"
+              ],
+              "positive_feedback": [
+                "Code is concise and readable",
+                "Proper function structure",
+                "Clear return statement"
+              ],
+              "security_analysis": {
+                "vulnerabilities": [
+                  {
+                    "type": "input_validation",
+                    "severity": "medium",
+                    "description": "No input validation present"
+                  }
+                ],
+                "recommendations": [
+                  "No security issues detected in this simple function",
+                  "Consider input validation for production use"
+                ]
+              }
+            },
+            "code_analyzed": "কোডের সিকিউরিটি ইস্যু আছে কিনা বলো",
+            "confidence": 0.88,
+            "processing_time": "0.12s",
+            "model": "code-reviewer-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Code review query: Review this code: def foo(x): return x+1\n",
+        "INFO:root:Code review query: কোডের সিকিউরিটি ইস্যু আছে কিনা বলো\n",
+        "INFO:root:Code review query: Review this code: def foo(x): return x+1\n",
+        "INFO:root:Code review query: কোডের সিকিউরিটি ইস্যু আছে কিনা বলো\n",
+        "INFO:root:Code review query: Review this code: def foo(x): return x+1\n",
+        "INFO:root:Code review query: কোডের সিকিউরিটি ইস্যু আছে কিনা বলো\n"
+      ]
+    },
+    "documentation": {
+      "url": "http://127.0.0.1:8005",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"documentation\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Generate API docs for user login",
+          "status": "ok",
+          "response_time_ms": 2.82,
+          "response": {
+            "query": "Generate API docs for user login",
+            "documentation": "# User Login API Documentation\n\n## Overview\nThis API provides user authentication functionality for the application.\n\n## Endpoints\n\n### POST /api/login\nAuthenticates a user and returns an access token.\n\n**Request Body:**\n```json\n{\n    \"username\": \"string\",\n    \"password\": \"string\"\n}\n```\n\n**Response:**\n```json\n{\n    \"status\": \"success\",\n    \"token\": \"jwt_token_here\",\n    \"user\": {\n        \"id\": 123,\n        \"username\": \"user123\",\n        \"email\": \"user@example.com\"\n    }\n}\n```\n\n**Error Response:**\n```json\n{\n    \"status\": \"error\",\n    \"message\": \"Invalid credentials\"\n}\n```\n\n## Authentication\nInclude the JWT token in the Authorization header:\n```\nAuthorization: Bearer <token>\n```\n\n## Example Usage\n```python\nimport requests\n\nlogin_data = {\n    \"username\": \"myuser\",\n    \"password\": \"mypassword\"\n}\n\nresponse = requests.post(\"https://api.example.com/login\", json=login_data)\nif response.status_code == 200:\n    token = response.json()[\"token\"]\n    print(f\"Login successful. Token: {token}\")\nelse:\n    print(\"Login failed\")\n```\n\n## Security Considerations\n- Passwords are hashed using bcrypt\n- Tokens expire after 24 hours\n- Rate limiting: 5 attempts per minute per IP\n",
+            "format": "markdown",
+            "language": "en",
+            "confidence": 0.94,
+            "processing_time": "0.16s",
+            "model": "doc-generator-v1"
+          }
+        },
+        {
+          "question": "লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো",
+          "status": "ok",
+          "response_time_ms": 4.5,
+          "response": {
+            "query": "লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো",
+            "documentation": "# User Login API Documentation\n\n## Overview\nThis API provides user authentication functionality for the application.\n\n## Endpoints\n\n### POST /api/login\nAuthenticates a user and returns an access token.\n\n**Request Body:**\n```json\n{\n    \"username\": \"string\",\n    \"password\": \"string\"\n}\n```\n\n**Response:**\n```json\n{\n    \"status\": \"success\",\n    \"token\": \"jwt_token_here\",\n    \"user\": {\n        \"id\": 123,\n        \"username\": \"user123\",\n        \"email\": \"user@example.com\"\n    }\n}\n```\n\n**Error Response:**\n```json\n{\n    \"status\": \"error\",\n    \"message\": \"Invalid credentials\"\n}\n```\n\n## Authentication\nInclude the JWT token in the Authorization header:\n```\nAuthorization: Bearer <token>\n```\n\n## Example Usage\n```python\nimport requests\n\nlogin_data = {\n    \"username\": \"myuser\",\n    \"password\": \"mypassword\"\n}\n\nresponse = requests.post(\"https://api.example.com/login\", json=login_data)\nif response.status_code == 200:\n    token = response.json()[\"token\"]\n    print(f\"Login successful. Token: {token}\")\nelse:\n    print(\"Login failed\")\n```\n\n## Security Considerations\n- Passwords are hashed using bcrypt\n- Tokens expire after 24 hours\n- Rate limiting: 5 attempts per minute per IP\n",
+            "format": "markdown",
+            "language": "en",
+            "confidence": 0.94,
+            "processing_time": "0.16s",
+            "model": "doc-generator-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Documentation query: Generate API docs for user login\n",
+        "INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো\n",
+        "INFO:root:Documentation query: Generate API docs for user login\n",
+        "INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো\n",
+        "INFO:root:Documentation query: Generate API docs for user login\n",
+        "INFO:root:Documentation query: লগইন সিস্টেমের ডকুমেন্টেশন তৈরি করো\n"
+      ]
+    },
+    "testing": {
+      "url": "http://127.0.0.1:8006",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"testing\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Write pytest for add(x,y)",
+          "status": "ok",
+          "response_time_ms": 2.99,
+          "response": {
+            "query": "Write pytest for add(x,y)",
+            "test_code": "import pytest\n\ndef add(x, y):\n    \"\"\"Add two numbers and return the result\"\"\"\n    return x + y\n\nclass TestAddFunction:\n    def test_add_positive_numbers(self):\n        \"\"\"Test adding two positive numbers\"\"\"\n        assert add(2, 3) == 5\n        assert add(10, 5) == 15\n    \n    def test_add_negative_numbers(self):\n        \"\"\"Test adding two negative numbers\"\"\"\n        assert add(-2, -3) == -5\n        assert add(-10, -5) == -15\n    \n    def test_add_mixed_numbers(self):\n        \"\"\"Test adding positive and negative numbers\"\"\"\n        assert add(2, -3) == -1\n        assert add(-10, 5) == -5\n    \n    def test_add_zero(self):\n        \"\"\"Test adding with zero\"\"\"\n        assert add(0, 5) == 5\n        assert add(5, 0) == 5\n        assert add(0, 0) == 0\n    \n    def test_add_floats(self):\n        \"\"\"Test adding floating point numbers\"\"\"\n        assert add(2.5, 3.7) == 6.2\n        assert add(1.1, 2.2) == pytest.approx(3.3)\n    \n    def test_add_edge_cases(self):\n        \"\"\"Test edge cases\"\"\"\n        assert add(float('inf'), 1) == float('inf')\n        assert add(float('-inf'), 1) == float('-inf')\n\n# Run tests with: pytest test_add.py -v",
+            "test_framework": "pytest",
+            "language": "python",
+            "confidence": 0.91,
+            "processing_time": "0.14s",
+            "model": "test-generator-v1"
+          }
+        },
+        {
+          "question": "পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো",
+          "status": "ok",
+          "response_time_ms": 2.42,
+          "response": {
+            "query": "পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো",
+            "test_code": "# পাইথন ফাংশনের জন্য টেস্ট কেস\nimport unittest\n\ndef sample_function(x):\n    \"\"\"একটি নমুনা ফাংশন\"\"\"\n    return x * 2\n\nclass TestSampleFunction(unittest.TestCase):\n    def test_basic_functionality(self):\n        \"\"\"মৌলিক কার্যকারিতা পরীক্ষা\"\"\"\n        result = sample_function(5)\n        self.assertEqual(result, 10)\n    \n    def test_with_zero(self):\n        \"\"\"শূন্য দিয়ে পরীক্ষা\"\"\"\n        result = sample_function(0)\n        self.assertEqual(result, 0)\n    \n    def test_with_negative(self):\n        \"\"\"নেতিবাচক সংখ্যা দিয়ে পরীক্ষা\"\"\"\n        result = sample_function(-3)\n        self.assertEqual(result, -6)\n    \n    def test_with_float(self):\n        \"\"\"দশমিক সংখ্যা দিয়ে পরীক্ষা\"\"\"\n        result = sample_function(2.5)\n        self.assertEqual(result, 5.0)\n\nif __name__ == '__main__':\n    unittest.main()",
+            "test_framework": "pytest",
+            "language": "python",
+            "confidence": 0.91,
+            "processing_time": "0.14s",
+            "model": "test-generator-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Testing query: Write pytest for add(x,y)\n",
+        "INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো\n",
+        "INFO:root:Testing query: Write pytest for add(x,y)\n",
+        "INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো\n",
+        "INFO:root:Testing query: Write pytest for add(x,y)\n",
+        "INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো\n"
+      ]
+    },
+    "deployment": {
+      "url": "http://127.0.0.1:8007",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"deployment\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Write a Dockerfile for Flask app",
+          "status": "ok",
+          "response_time_ms": 2.91,
+          "response": {
+            "query": "Write a Dockerfile for Flask app",
+            "deployment_config": "# Dockerfile for Flask Application\nFROM python:3.11-slim\n\n# Set working directory\nWORKDIR /app\n\n# Set environment variables\nENV PYTHONDONTWRITEBYTECODE=1\nENV PYTHONUNBUFFERED=1\n\n# Install system dependencies\nRUN apt-get update \\\n    && apt-get install -y --no-install-recommends \\\n        build-essential \\\n        curl \\\n    && rm -rf /var/lib/apt/lists/*\n\n# Copy requirements and install Python dependencies\nCOPY requirements.txt .\nRUN pip install --no-cache-dir --upgrade pip \\\n    && pip install --no-cache-dir -r requirements.txt\n\n# Copy application code\nCOPY . .\n\n# Create non-root user\nRUN adduser --disabled-password --gecos '' appuser \\\n    && chown -R appuser:appuser /app\nUSER appuser\n\n# Expose port\nEXPOSE 8000\n\n# Health check\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n    CMD curl -f http://localhost:8000/health || exit 1\n\n# Run the application\nCMD [\"python\", \"app.py\"]\n\n# Build command: docker build -t flask-app .\n# Run command: docker run -p 8000:8000 flask-app",
+            "type": "dockerfile",
+            "confidence": 0.93,
+            "processing_time": "0.17s",
+            "model": "deployment-generator-v1"
+          }
+        },
+        {
+          "question": "একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো",
+          "status": "ok",
+          "response_time_ms": 4.21,
+          "response": {
+            "query": "একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো",
+            "deployment_config": "#!/bin/bash\n# Server Deployment Script\n\nset -e\n\necho \"🚀 Starting server deployment...\"\n\n# Variables\nAPP_NAME=\"flask-app\"\nDEPLOY_DIR=\"/var/www/app\"\nSERVICE_NAME=\"flask-app\"\nPORT=8000\n\n# Create deployment directory\nsudo mkdir -p $DEPLOY_DIR\nsudo chown $USER:$USER $DEPLOY_DIR\n\n# Copy application files\ncp -r . $DEPLOY_DIR/\ncd $DEPLOY_DIR\n\n# Install dependencies\necho \"📦 Installing dependencies...\"\npip install -r requirements.txt\n\n# Create systemd service\necho \"⚙️ Creating systemd service...\"\nsudo tee /etc/systemd/system/$SERVICE_NAME.service > /dev/null <<EOF\n[Unit]\nDescription=Flask Application\nAfter=network.target\n\n[Service]\nType=simple\nUser=$USER\nWorkingDirectory=$DEPLOY_DIR\nEnvironment=PATH=$DEPLOY_DIR/venv/bin\nExecStart=/usr/bin/python3 app.py\nRestart=always\nRestartSec=3\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\n# Reload systemd and start service\nsudo systemctl daemon-reload\nsudo systemctl enable $SERVICE_NAME\nsudo systemctl start $SERVICE_NAME\n\n# Check status\necho \"✅ Checking service status...\"\nsudo systemctl status $SERVICE_NAME --no-pager\n\necho \"🎉 Deployment completed successfully!\"\necho \"Service running on http://localhost:$PORT\"\n",
+            "type": "script",
+            "confidence": 0.93,
+            "processing_time": "0.17s",
+            "model": "deployment-generator-v1"
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Deployment query: Write a Dockerfile for Flask app\n",
+        "INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো\n",
+        "INFO:root:Deployment query: Write a Dockerfile for Flask app\n",
+        "INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো\n",
+        "INFO:root:Deployment query: Write a Dockerfile for Flask app\n",
+        "INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো\n"
+      ]
+    },
+    "voice_processor": {
+      "url": "http://127.0.0.1:8014",
+      "health": {
+        "ok": true,
+        "info": "{\"status\":\"healthy\",\"service\":\"voice-processor\",\"timestamp\":\"2024-01-01T00:00:00Z\"}"
+      },
+      "questions": [
+        {
+          "question": "Convert text to speech: Hello World",
+          "status": "ok",
+          "response_time_ms": 2.51,
+          "response": {
+            "query": "Convert text to speech: Hello World",
+            "audio_result": {
+              "text": "Convert text to speech: Hello World",
+              "language": "en",
+              "voice_type": "english_male",
+              "audio_id": "english_audio_5390",
+              "duration": 2.1,
+              "file_size": 4200,
+              "quality": "high",
+              "sample_rate": 22050
+            },
+            "processing_status": "completed",
+            "confidence": 0.96,
+            "processing_time": "0.22s",
+            "model": "voice-processor-v1",
+            "features": [
+              "text-to-speech",
+              "language-detection",
+              "voice-synthesis",
+              "audio-compression"
+            ]
+          }
+        },
+        {
+          "question": "বাংলায় ভয়েস আউটপুট তৈরি করো",
+          "status": "ok",
+          "response_time_ms": 2.48,
+          "response": {
+            "query": "বাংলায় ভয়েস আউটপুট তৈরি করো",
+            "audio_result": {
+              "text": "বাংলায় ভয়েস আউটপুট তৈরি করো",
+              "language": "auto",
+              "voice_type": "default",
+              "audio_id": "audio_1160",
+              "duration": 2.0300000000000002,
+              "file_size": 3770,
+              "quality": "medium",
+              "sample_rate": 16000
+            },
+            "processing_status": "completed",
+            "confidence": 0.96,
+            "processing_time": "0.22s",
+            "model": "voice-processor-v1",
+            "features": [
+              "text-to-speech",
+              "language-detection",
+              "voice-synthesis",
+              "audio-compression"
+            ]
+          }
+        }
+      ],
+      "logs_tail": [
+        "INFO:root:Voice processing query: Convert text to speech: Hello World\n",
+        "INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো\n",
+        "INFO:root:Voice processing query: Convert text to speech: Hello World\n",
+        "INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো\n",
+        "INFO:root:Voice processing query: Convert text to speech: Hello World\n",
+        "INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো\n"
+      ]
+    }
+  }
+}

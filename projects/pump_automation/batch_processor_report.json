@@ -1,0 +1,95 @@
+{
+  "timestamp": "2025-09-13T12:40:54.295974",
+  "batch_database": "batch_processor.db",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "max_workers": 3,
+  "processor_status": {
+    "timestamp": "2025-09-13T12:40:54.295951",
+    "status_counts": {
+      "pending": 14,
+      "running": 1
+    },
+    "queue_size": 12,
+    "active_workers": 3,
+    "recent_jobs": [
+      [
+        "system_health_batch_ops_1757745654",
+        "system_health_batch - ops",
+        "ops",
+        "pending",
+        "2025-09-13T12:40:54.267125"
+      ],
+      [
+        "system_health_batch_conversational_1757745654",
+        "system_health_batch - conversational",
+        "conversational",
+        "pending",
+        "2025-09-13T12:40:54.260134"
+      ],
+      [
+        "system_health_batch_verifier_1757745654",
+        "system_health_batch - verifier",
+        "verifier",
+        "pending",
+        "2025-09-13T12:40:54.252114"
+      ],
+      [
+        "system_health_batch_bestpractices_1757745654",
+        "system_health_batch - bestpractices",
+        "bestpractices",
+        "pending",
+        "2025-09-13T12:40:54.244846"
+      ],
+      [
+        "system_health_batch_programming_1757745654",
+        "system_health_batch - programming",
+        "programming",
+        "pending",
+        "2025-09-13T12:40:54.237780"
+      ],
+      [
+        "performance_analysis_batch_ops_1757745654",
+        "performance_analysis_batch - ops",
+        "ops",
+        "pending",
+        "2025-09-13T12:40:54.230460"
+      ],
+      [
+        "performance_analysis_batch_conversational_1757745654",
+        "performance_analysis_batch - conversational",
+        "conversational",
+        "pending",
+        "2025-09-13T12:40:54.222688"
+      ],
+      [
+        "performance_analysis_batch_verifier_1757745654",
+        "performance_analysis_batch - verifier",
+        "verifier",
+        "pending",
+        "2025-09-13T12:40:54.215618"
+      ],
+      [
+        "performance_analysis_batch_bestpractices_1757745654",
+        "performance_analysis_batch - bestpractices",
+        "bestpractices",
+        "pending",
+        "2025-09-13T12:40:54.208404"
+      ],
+      [
+        "performance_analysis_batch_programming_1757745654",
+        "performance_analysis_batch - programming",
+        "programming",
+        "pending",
+        "2025-09-13T12:40:54.198250"
+      ]
+    ],
+    "processor_active": true
+  },
+  "system_status": "active"
+}

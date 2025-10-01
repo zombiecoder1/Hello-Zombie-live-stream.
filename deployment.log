@@ -1,0 +1,15 @@
+INFO:root:Deployment query: Write a Dockerfile for Flask app
+INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো
+INFO:root:Deployment query: Write a Dockerfile for Flask app
+INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো
+INFO:root:Deployment query: Write a Dockerfile for Flask app
+INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো
+INFO:root:Deployment query: Write a Dockerfile for Flask app
+INFO:root:Deployment query: Write a Dockerfile for Flask app
+INFO:root:Deployment query: একটি সার্ভার ডিপ্লয়মেন্ট স্ক্রিপ্ট লেখো
+2025-09-30 06:11:32,193 - INFO - {"ts": 1759191092.1858509, "session": "d51d56c0-4777-400c-994c-f4cb5bb6fa29", "prompt": "Write Dockerfile for Flask app", "response_len": 1009, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,205 - INFO - {"ts": 1759191092.1984904, "session": "chatcmpl-5aa73265-b6df-4d8e-92f6-373abaa59196", "prompt": "\u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae \u09a1\u09bf\u09aa\u09cd\u09b2\u09af\u09bc \u09b8\u09cd\u0995\u09cd\u09b0\u09bf\u09aa\u09cd\u099f \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 1153, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,135 - INFO - {"ts": 1759191376.1270442, "session": "7b411298-be73-4ac8-988c-123229981bca", "prompt": "Write Dockerfile for Flask app", "response_len": 1009, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,146 - INFO - {"ts": 1759191376.1383464, "session": "chatcmpl-da17ce38-28c8-4ad3-95e7-d9229866c382", "prompt": "\u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae \u09a1\u09bf\u09aa\u09cd\u09b2\u09af\u09bc \u09b8\u09cd\u0995\u09cd\u09b0\u09bf\u09aa\u09cd\u099f \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 1153, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,320 - INFO - {"ts": 1759193226.3123102, "session": "500e14d5-9705-45b9-856a-2d9072433e6d", "prompt": "Write Dockerfile for Flask app", "response_len": 1009, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,333 - INFO - {"ts": 1759193226.3257136, "session": "chatcmpl-2d873df5-7e95-4f3e-8f4a-2abda6e571f5", "prompt": "\u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae \u09a1\u09bf\u09aa\u09cd\u09b2\u09af\u09bc \u09b8\u09cd\u0995\u09cd\u09b0\u09bf\u09aa\u09cd\u099f \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 1153, "model": "deployment-generator-v1", "cached": false, "duration_ms": 0}
