@@ -1,0 +1,108 @@
+{
+  "bengali": {
+    "file_operations": {
+      "নতুন ফাইল": "create_file",
+      "ফাইল খোলো": "open_file",
+      "ফাইল সেভ করো": "save_file",
+      "ফাইল বন্ধ করো": "close_file",
+      "ফাইল ডিলিট করো": "delete_file"
+    },
+    "editing": {
+      "কপি করো": "copy",
+      "পেস্ট করো": "paste",
+      "কাট করো": "cut",
+      "আন্ডু করো": "undo",
+      "রিডু করো": "redo",
+      "সব সিলেক্ট করো": "select_all",
+      "লাইন ডিলিট করো": "delete_line",
+      "লাইন কপি করো": "copy_line"
+    },
+    "code_actions": {
+      "কমেন্ট যোগ করো": "add_comment",
+      "কমেন্ট সরাও": "remove_comment",
+      "ভ্যারিয়েবল রিনেম করো": "rename_variable",
+      "ফাংশন তৈরি করো": "create_function",
+      "ক্লাস তৈরি করো": "create_class",
+      "ইমপোর্ট যোগ করো": "add_import",
+      "কোড ফরম্যাট করো": "format_code"
+    },
+    "navigation": {
+      "উপরে যাও": "go_up",
+      "নিচে যাও": "go_down",
+      "শুরুতে যাও": "go_to_start",
+      "শেষে যাও": "go_to_end",
+      "লাইনে যাও": "go_to_line",
+      "ফাইল খুঁজো": "find_file",
+      "টেক্সট খুঁজো": "find_text"
+    },
+    "ai_commands": {
+      "কোড লিখো": "generate_code",
+      "বাগ ঠিক করো": "fix_bug",
+      "কোড ব্যাখ্যা করো": "explain_code",
+      "রিফ্যাক্টর করো": "refactor_code",
+      "টেস্ট লিখো": "write_test",
+      "ডকুমেন্টেশন লিখো": "write_docs"
+    },
+    "debug": {
+      "ব্রেকপয়েন্ট যোগ করো": "add_breakpoint",
+      "ব্রেকপয়েন্ট সরাও": "remove_breakpoint",
+      "ডিবাগ শুরু করো": "start_debug",
+      "ডিবাগ বন্ধ করো": "stop_debug",
+      "স্টেপ ওভার": "step_over",
+      "স্টেপ ইনটু": "step_into"
+    }
+  },
+  "english": {
+    "file_operations": {
+      "create new file": "create_file",
+      "open file": "open_file",
+      "save file": "save_file",
+      "close file": "close_file",
+      "delete file": "delete_file"
+    },
+    "editing": {
+      "copy": "copy",
+      "paste": "paste",
+      "cut": "cut",
+      "undo": "undo",
+      "redo": "redo",
+      "select all": "select_all",
+      "delete line": "delete_line",
+      "copy line": "copy_line"
+    },
+    "code_actions": {
+      "add comment": "add_comment",
+      "remove comment": "remove_comment",
+      "rename variable": "rename_variable",
+      "create function": "create_function",
+      "create class": "create_class",
+      "add import": "add_import",
+      "format code": "format_code"
+    },
+    "navigation": {
+      "go up": "go_up",
+      "go down": "go_down",
+      "go to start": "go_to_start",
+      "go to end": "go_to_end",
+      "go to line": "go_to_line",
+      "find file": "find_file",
+      "find text": "find_text"
+    },
+    "ai_commands": {
+      "generate code": "generate_code",
+      "fix bug": "fix_bug",
+      "explain code": "explain_code",
+      "refactor code": "refactor_code",
+      "write test": "write_test",
+      "write documentation": "write_docs"
+    },
+    "debug": {
+      "add breakpoint": "add_breakpoint",
+      "remove breakpoint": "remove_breakpoint",
+      "start debugging": "start_debug",
+      "stop debugging": "stop_debug",
+      "step over": "step_over",
+      "step into": "step_into"
+    }
+  }
+}

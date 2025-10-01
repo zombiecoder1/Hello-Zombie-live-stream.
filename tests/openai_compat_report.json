@@ -1,0 +1,144 @@
+{
+  "timestamp": "2025-09-30T07:02:18Z",
+  "agents": {
+    "bengali_nlp": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8002): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa0ba40>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "code_generation": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8003): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa307a0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "code_review": {
+      "health": {
+        "status": "healthy",
+        "service": "code-review",
+        "timestamp": "2024-01-01T00:00:00Z"
+      },
+      "session_ok": true,
+      "streaming_ok": false,
+      "mem_ok": true,
+      "questions": [
+        {
+          "prompt": "Review: def foo(x): return x+1",
+          "status_code": 200,
+          "latency_ms": 3.69,
+          "response": {
+            "id": "chatcmpl-1efc4139-8ad5-4a78-a9a6-b8e9d118e19f",
+            "object": "chat.completion",
+            "created": 1759194138,
+            "model": "local-model",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "Code Review Results for: def foo(x): return x+1\n\n**Overall Score: 8.5/10**\n\n**Issues Found:**\n- Function name could be more descriptive (Low severity)\n- Suggestion: Use 'increment' instead of 'foo'\n\n**Recommendations:**\n- Add type hints for better code clarity\n- Consider adding docstring for function documentation  \n- Add input validation for edge cases\n\n**Positive Feedback:**\n- Code is concise and readable\n- Proper function structure\n- Clear return statement\n\n**Security Analysis:**\n- No security vulnerabilities detected\n- Consider input validation for production use"
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 5,
+              "completion_tokens": 82,
+              "total_tokens": 87
+            },
+            "meta": {
+              "memory_used": true,
+              "processing_time": "0.00s",
+              "confidence": 0.88,
+              "session_id": "c32f3704-dda5-4552-aa2a-bb6c34df1136"
+            }
+          }
+        },
+        {
+          "prompt": "Check security issues in this code sample",
+          "status_code": 200,
+          "latency_ms": 2.72,
+          "response": {
+            "id": "chatcmpl-375b1d22-1a99-4e50-8ab7-08d52857ba02",
+            "object": "chat.completion",
+            "created": 1759194138,
+            "model": "local-model",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "Code Review Results for: Check security issues in this code sample\n\n**Overall Score: 8.5/10**\n\n**Issues Found:**\n- Function name could be more descriptive (Low severity)\n- Suggestion: Use 'increment' instead of 'foo'\n\n**Recommendations:**\n- Add type hints for better code clarity\n- Consider adding docstring for function documentation  \n- Add input validation for edge cases\n\n**Positive Feedback:**\n- Code is concise and readable\n- Proper function structure\n- Clear return statement\n\n**Security Analysis:**\n- No security vulnerabilities detected\n- Consider input validation for production use\n\n**Enhanced Security Analysis:**\n- No input validation present (Medium severity)\n- Consider implementing input sanitization\n- Add type checking and bounds validation\n"
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 7,
+              "completion_tokens": 107,
+              "total_tokens": 114
+            },
+            "meta": {
+              "memory_used": true,
+              "processing_time": "0.00s",
+              "confidence": 0.88,
+              "session_id": "chatcmpl-1efc4139-8ad5-4a78-a9a6-b8e9d118e19f"
+            }
+          }
+        }
+      ],
+      "logs_tail": [
+        "no log at /var/log/zombie/code_review.log"
+      ]
+    },
+    "documentation": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8005): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa315b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "testing": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8006): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa318b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "deployment": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa326c0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "voice_processor": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8014): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7419daa33500>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    }
+  }
+}

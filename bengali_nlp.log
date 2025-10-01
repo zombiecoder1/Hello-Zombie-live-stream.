@@ -1,0 +1,18 @@
+INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো
+INFO:root:Query received: Write a Bengali proverb with meaning
+INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো
+INFO:root:Query received: Write a Bengali proverb with meaning
+INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো
+INFO:root:Query received: Write a Bengali proverb with meaning
+INFO:root:Query received: হ্যালো
+INFO:root:Query received: বাংলায় একটি ছোট গল্প লেখো
+INFO:root:Query received: Write a Bengali proverb with meaning
+2025-09-30 06:11:31,992 - INFO - {"ts": 1759191091.9845645, "session": "e6de86e5-4c94-4104-9c5c-4a539ed3fc37", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,007 - INFO - {"ts": 1759191091.9994917, "session": "chatcmpl-c91cf882-e8c1-4585-a087-a36c9f6ae707", "prompt": "Write a Bengali proverb with meaning", "response_len": 102, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,031 - INFO - {"ts": 1759191092.0153053, "session": "9dbdb58a-6e03-4093-b131-3bc71edfca89", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:15,990 - INFO - {"ts": 1759191375.9839132, "session": "0e502fa9-d032-421e-8899-9cc1c16a1c3c", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,000 - INFO - {"ts": 1759191375.9936047, "session": "chatcmpl-e1f9a6f6-62b8-40a2-95da-61d0755f3e1e", "prompt": "Write a Bengali proverb with meaning", "response_len": 102, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,009 - INFO - {"ts": 1759191376.0031085, "session": "4da15f00-9050-4518-9cf7-2e041a916ce5", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,149 - INFO - {"ts": 1759193226.1308014, "session": "80068e41-f88b-4e40-a20a-9e76ed51d47e", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,165 - INFO - {"ts": 1759193226.1555102, "session": "chatcmpl-c36bc00f-654a-4786-be42-9ba68d49681f", "prompt": "Write a Bengali proverb with meaning", "response_len": 102, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,178 - INFO - {"ts": 1759193226.1686823, "session": "7bc31818-b435-45bf-9960-1cbb715deecd", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u098f\u0995\u099f\u09bf \u099b\u09cb\u099f \u0997\u09b2\u09cd\u09aa \u09b2\u09c7\u0996\u09cb", "response_len": 95, "model": "bengali-nlp-v1", "cached": false, "duration_ms": 0}

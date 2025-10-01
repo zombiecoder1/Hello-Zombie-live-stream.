@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-09-13T12:14:39.246217",
+  "services_blocked": [
+    "api.openai.com",
+    "api.anthropic.com",
+    "huggingface.co"
+  ],
+  "blocking_entries": [
+    "127.0.0.1 api.openai.com",
+    "::1 api.openai.com",
+    "127.0.0.1 api.anthropic.com",
+    "::1 api.anthropic.com",
+    "127.0.0.1 huggingface.co",
+    "::1 huggingface.co"
+  ],
+  "verification_results": {
+    "api.openai.com": "BLOCKED",
+    "api.anthropic.com": "BLOCKED",
+    "huggingface.co": "BLOCKED"
+  }
+}

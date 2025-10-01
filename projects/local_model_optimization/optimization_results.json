@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-09-13T12:40:55.190413",
+  "ollama_status": true,
+  "system_resources": {
+    "cpu_percent": 90.9,
+    "memory_percent": 43.7,
+    "memory_available": 8.717716217041016,
+    "disk_usage": 64.2
+  },
+  "current_performance": {
+    "response_time": 0.002886056900024414,
+    "success": false
+  },
+  "optimizations": {
+    "num_ctx": 2048,
+    "num_predict": 512,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "repeat_penalty": 1.1,
+    "num_thread": 4
+  }
+}

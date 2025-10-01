@@ -1,0 +1,28 @@
+{
+  "bengali": {
+    "file_created": "নতুন ফাইল তৈরি করা হয়েছে",
+    "file_saved": "ফাইল সেভ করা হয়েছে",
+    "code_formatted": "কোড ফরম্যাট করা হয়েছে",
+    "comment_added": "কমেন্ট যোগ করা হয়েছে",
+    "variable_renamed": "ভ্যারিয়েবল রিনেম করা হয়েছে",
+    "breakpoint_added": "ব্রেকপয়েন্ট যোগ করা হয়েছে",
+    "debug_started": "ডিবাগিং শুরু হয়েছে",
+    "ai_processing": "এআই আপনার অনুরোধ প্রক্রিয়া করছে",
+    "command_not_understood": "দুঃখিত, আমি আপনার কমান্ড বুঝতে পারিনি",
+    "listening": "আমি শুনছি, বলুন",
+    "stopped_listening": "শোনা বন্ধ করেছি"
+  },
+  "english": {
+    "file_created": "New file created successfully",
+    "file_saved": "File saved successfully",
+    "code_formatted": "Code formatted successfully",
+    "comment_added": "Comment added successfully",
+    "variable_renamed": "Variable renamed successfully",
+    "breakpoint_added": "Breakpoint added successfully",
+    "debug_started": "Debugging started",
+    "ai_processing": "AI is processing your request",
+    "command_not_understood": "Sorry, I didn't understand that command",
+    "listening": "I'm listening, please speak",
+    "stopped_listening": "Stopped listening"
+  }
+}

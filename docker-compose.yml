@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Database Services
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: zombiecoder
+      POSTGRES_USER: zombiecoder
+      POSTGRES_PASSWORD: zombiecoder123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # API Gateway
+  api-gateway:
+    build: ./core/api-gateway
+    ports:
+      - "8000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://zombiecoder:zombiecoder123@postgres:5432/zombiecoder
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  # Orchestrator
+  orchestrator:
+    build: ./core/orchestrator
+    ports:
+      - "8001:3000"
+    environment:
+      - NODE_ENV=production
+      - API_GATEWAY_URL=http://api-gateway:3000
+    depends_on:
+      - api-gateway
+
+  # Web Portal
+  web-portal:
+    build: ./frontend/web-portal
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_URL=http://api-gateway:3000
+    depends_on:
+      - api-gateway
+
+  # Ollama for local models
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_data:

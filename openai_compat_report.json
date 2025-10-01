@@ -1,0 +1,144 @@
+{
+  "timestamp": "2025-09-30T06:54:49Z",
+  "agents": {
+    "bengali_nlp": {
+      "health": {
+        "status": "healthy",
+        "service": "bengali-nlp",
+        "timestamp": "2024-01-01T00:00:00Z"
+      },
+      "session_ok": true,
+      "streaming_ok": true,
+      "mem_ok": true,
+      "questions": [
+        {
+          "prompt": "বাংলায় একটি ছোট গল্প লেখো",
+          "status_code": 200,
+          "latency_ms": 14.99,
+          "response": {
+            "id": "chatcmpl-c4421bc6-b9e0-459d-99e6-c08a3e5cf913",
+            "object": "chat.completion",
+            "created": 1759193689,
+            "model": "local-model",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "বাংলা প্রশ্নের উত্তর: বাংলায় একটি ছোট গল্প লেখো - এটি একটি বাংলা ভাষার প্রক্রিয়াকরণের উদাহরণ।"
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 5,
+              "completion_tokens": 15,
+              "total_tokens": 20
+            },
+            "meta": {
+              "memory_used": true,
+              "processing_time": "0.01s",
+              "confidence": 0.95,
+              "session_id": "f69709f4-5ced-4041-b6c3-872617da7a19"
+            }
+          }
+        },
+        {
+          "prompt": "Write a Bengali proverb with meaning",
+          "status_code": 200,
+          "latency_ms": 13.89,
+          "response": {
+            "id": "chatcmpl-284b0076-a301-487d-80fa-15a2ea20ce9e",
+            "object": "chat.completion",
+            "created": 1759193689,
+            "model": "local-model",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "English query response: Write a Bengali proverb with meaning - This is processed by Bengali NLP agent."
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 6,
+              "completion_tokens": 17,
+              "total_tokens": 23
+            },
+            "meta": {
+              "memory_used": true,
+              "processing_time": "0.01s",
+              "confidence": 0.95,
+              "session_id": "chatcmpl-c4421bc6-b9e0-459d-99e6-c08a3e5cf913"
+            }
+          }
+        }
+      ],
+      "logs_tail": [
+        "no log at /var/log/zombie/bengali_nlp.log"
+      ]
+    },
+    "code_generation": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8003): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f53f2270>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "code_review": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8004): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f53f2db0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "documentation": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8005): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f53f3b30>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "testing": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8006): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f53f2180>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "deployment": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8007): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f53f2570>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    },
+    "voice_processor": {
+      "health": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8014): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f73f54149b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+      },
+      "session_ok": false,
+      "streaming_ok": false,
+      "mem_ok": false,
+      "questions": [],
+      "logs_tail": []
+    }
+  }
+}
