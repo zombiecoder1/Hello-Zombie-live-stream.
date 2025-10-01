@@ -1,0 +1,11 @@
+{
+  "title": "ZombieCoder System Documentation",
+  "description": "Bengali TTS audio documentation with real-life workflow",
+  "duration_minutes": 7.8,
+  "language": "Bengali",
+  "generated_at": "2025-09-13T13:20:41.329330",
+  "file_size_mb": 1.79,
+  "tts_engine": "Google TTS",
+  "text_cleaned": true,
+  "chunks_processed": 2
+}

@@ -1,0 +1,15 @@
+INFO:root:Voice processing query: Convert text to speech: Hello World
+INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো
+INFO:root:Voice processing query: Convert text to speech: Hello World
+INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো
+INFO:root:Voice processing query: Convert text to speech: Hello World
+INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো
+INFO:root:Voice processing query: Convert text to speech: Hello World
+INFO:root:Voice processing query: Convert text to speech: Hello World
+INFO:root:Voice processing query: বাংলায় ভয়েস আউটপুট তৈরি করো
+2025-09-30 06:11:32,230 - INFO - {"ts": 1759191092.220626, "session": "251e7175-ba4a-4ba6-90e3-a27a844501ed", "prompt": "Convert to speech: Hello world", "response_len": 205, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,242 - INFO - {"ts": 1759191092.235007, "session": "chatcmpl-9210301a-d4ea-413b-a56d-4c433967e8c8", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u099f\u09c7\u0995\u09cd\u09b8\u099f-\u099f\u09c1-\u09b8\u09cd\u09aa\u09bf\u099a \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 311, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,165 - INFO - {"ts": 1759191376.1577241, "session": "03def903-b930-4c32-8f47-864df4cf6759", "prompt": "Convert to speech: Hello world", "response_len": 205, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,176 - INFO - {"ts": 1759191376.1690032, "session": "chatcmpl-4bc05b96-5693-4208-b0ff-fc6afe01a94e", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u099f\u09c7\u0995\u09cd\u09b8\u099f-\u099f\u09c1-\u09b8\u09cd\u09aa\u09bf\u099a \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 311, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,352 - INFO - {"ts": 1759193226.3431053, "session": "7e1f1d9d-34eb-40f0-acdb-9544922d6736", "prompt": "Convert to speech: Hello world", "response_len": 205, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,363 - INFO - {"ts": 1759193226.3563542, "session": "chatcmpl-fadac79a-2022-45da-b506-d86ec72adbdf", "prompt": "\u09ac\u09be\u0982\u09b2\u09be\u09af\u09bc \u099f\u09c7\u0995\u09cd\u09b8\u099f-\u099f\u09c1-\u09b8\u09cd\u09aa\u09bf\u099a \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09cb", "response_len": 312, "model": "voice-processor-v1", "cached": false, "duration_ms": 0}

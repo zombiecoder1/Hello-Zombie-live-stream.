@@ -1,0 +1,64 @@
+{
+  "date": "2025-09-13",
+  "priority_tasks": [
+    {
+      "id": "ollama_auth_fix",
+      "agent": "ops",
+      "task": "Fix Ollama authentication and service permission issues",
+      "script": "projects/system_fixes/ollama_auth_fix.py",
+      "status": "pending",
+      "priority": "critical"
+    },
+    {
+      "id": "system_optimization_doc",
+      "agent": "bestpractices",
+      "task": "Document system optimization and server simplification",
+      "script": "projects/system_optimization/system_architecture_doc.md",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "id": "tts_documentation",
+      "agent": "conversational",
+      "task": "Create 10-minute audio documentation using Google TTS",
+      "script": "projects/tts_documentation/google_tts_generator.py",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "id": "git_commit",
+      "agent": "programming",
+      "task": "Commit all daily updates and changes",
+      "script": "git add . && git commit -m 'Daily updates'",
+      "status": "pending",
+      "priority": "medium"
+    },
+    {
+      "id": "system_validation",
+      "agent": "verifier",
+      "task": "Validate all systems and run comprehensive tests",
+      "script": "projects/agent_instructions/daily_agent_instructions.py",
+      "status": "pending",
+      "priority": "medium"
+    }
+  ],
+  "workflow_schedule": {
+    "morning_routine": "9:00 AM",
+    "midday_check": "12:00 PM",
+    "evening_wrapup": "6:00 PM"
+  },
+  "zero_tolerance_rules": [
+    "No Fake Work",
+    "Folder Discipline",
+    "Pre-server Checks",
+    "Documentation",
+    "Blueprint Compliance"
+  ],
+  "success_metrics": {
+    "task_completion": "100%",
+    "system_health": "Optimal",
+    "error_rate": "< 1%",
+    "documentation": "Complete",
+    "git_status": "Synchronized"
+  }
+}

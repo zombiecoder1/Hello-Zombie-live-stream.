@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-09-13T12:40:53.127837",
+  "scheduler_database": "task_scheduler.db",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "scheduler_status": {
+    "timestamp": "2025-09-13T12:40:53.127822",
+    "status_counts": {
+      "scheduled": 5
+    },
+    "recent_executions": [
+      [
+        "health_check_30m",
+        "2025-09-13T12:40:53.090274",
+        "completed",
+        0.011060714721679688
+      ],
+      [
+        "memory_cleanup_12h",
+        "2025-09-13T12:40:52.883816",
+        "completed",
+        0.18046259880065918
+      ],
+      [
+        "model_opt_6h",
+        "2025-09-13T12:40:52.561305",
+        "completed",
+        0.2826244831085205
+      ],
+      [
+        "health_check_30m",
+        "2025-09-13T12:40:52.506240",
+        "completed",
+        0.027541399002075195
+      ],
+      [
+        "memory_cleanup_12h",
+        "2025-09-13T12:40:52.294376",
+        "completed",
+        0.16202330589294434
+      ],
+      [
+        "model_opt_6h",
+        "2025-09-13T12:40:51.788005",
+        "completed",
+        0.4542534351348877
+      ]
+    ],
+    "scheduler_active": true
+  },
+  "system_status": "active"
+}

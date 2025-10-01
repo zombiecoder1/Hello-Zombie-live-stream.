@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-09-13T12:41:02.678619",
+  "autofix_database": "auto_fix_scripts.db",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "check_interval": 15,
+  "error_patterns": {
+    "memory_error": "MemoryError|OutOfMemoryError|memory allocation failed",
+    "disk_error": "No space left on device|disk full|Disk quota exceeded",
+    "network_error": "Connection refused|Network is unreachable|Timeout",
+    "permission_error": "Permission denied|Access denied|Forbidden",
+    "file_error": "No such file or directory|File not found|Path not found",
+    "process_error": "Process not found|PID not found|Process terminated",
+    "service_error": "Service not running|Service failed|Connection refused"
+  },
+  "fix_actions": {
+    "memory_error": "fix_memory_issue",
+    "disk_error": "fix_disk_issue",
+    "network_error": "fix_network_issue",
+    "permission_error": "fix_permission_issue",
+    "file_error": "fix_file_issue",
+    "process_error": "fix_process_issue",
+    "service_error": "fix_service_issue"
+  },
+  "autofix_status": {
+    "timestamp": "2025-09-13T12:41:02.678599",
+    "error_counts": {},
+    "fix_counts": {},
+    "recent_errors": [],
+    "autofix_active": true
+  },
+  "system_status": "active"
+}

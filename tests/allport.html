@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZombieCoder – Agent Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f 0%, #2a2a3d 100%);
+      color: #f0f0f0;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: rgba(0, 255, 174, 0.1);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00ffae;
+      box-shadow: 0 4px 20px rgba(0, 255, 174, 0.3);
+    }
+
+    .header h1 {
+      color: #00ffae;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0, 255, 174, 0.5);
+    }
+
+    .header p {
+      color: #ffd166;
+      font-size: 1.2em;
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .agents-section {
+      grid-column: 1 / -1;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .agent-card {
+      background: rgba(42, 42, 61, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 174, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 255, 174, 0.2);
+      border-color: #00ffae;
+    }
+
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00ffae, #ffd166, #ff6b6b);
+    }
+
+    .agent-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .agent-name {
+      color: #ffd166;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+
+    .agent-status {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .status-online {
+      background: rgba(0, 255, 174, 0.2);
+      color: #00ffae;
+      border: 1px solid #00ffae;
+    }
+
+    .status-offline {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ff6b6b;
+      border: 1px solid #ff6b6b;
+    }
+
+    .agent-url {
+      color: #888;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .agent-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .metric {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .metric-label {
+      color: #888;
+      font-size: 0.8em;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      color: #00ffae;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .agent-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #00ffae, #00d4aa);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #00d4aa, #00ffae);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(45deg, #ffd166, #ffb347);
+      color: #000;
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(45deg, #ffb347, #ffd166);
+      transform: translateY(-2px);
+    }
+
+    .btn-danger {
+      background: linear-gradient(45deg, #ff6b6b, #ff5252);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: linear-gradient(45deg, #ff5252, #ff6b6b);
+      transform: translateY(-2px);
+    }
+
+    .logs-section {
+      grid-column: 1 / -1;
+      margin-top: 30px;
+    }
+
+    .logs-container {
+      background: rgba(42, 42, 61, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 174, 0.2);
+    }
+
+    .logs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(0, 255, 174, 0.3);
+    }
+
+    .logs-title {
+      color: #ffd166;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .log-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .log-tab {
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 174, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #888;
+    }
+
+    .log-tab.active {
+      background: #00ffae;
+      color: #000;
+      border-color: #00ffae;
+    }
+
+    .log-tab:hover {
+      border-color: #00ffae;
+      color: #00ffae;
+    }
+
+    .log-content {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 15px;
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
+
+    .log-entry {
+      margin-bottom: 8px;
+      padding: 5px;
+      border-radius: 4px;
+      border-left: 3px solid #00ffae;
+    }
+
+    .log-entry.error {
+      border-left-color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .log-entry.warning {
+      border-left-color: #ffd166;
+      background: rgba(255, 209, 102, 0.1);
+    }
+
+    .log-entry.info {
+      border-left-color: #00ffae;
+      background: rgba(0, 255, 174, 0.1);
+    }
+
+    .system-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: rgba(42, 42, 61, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 174, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      color: #00ffae;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0, 255, 174, 0.3);
+      border-radius: 50%;
+      border-top-color: #00ffae;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    .notification.success {
+      background: linear-gradient(45deg, #00ffae, #00d4aa);
+      color: #000;
+    }
+
+    .notification.error {
+      background: linear-gradient(45deg, #ff6b6b, #ff5252);
+    }
+
+    .notification.info {
+      background: linear-gradient(45deg, #ffd166, #ffb347);
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+      
+      .agents-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .agent-metrics {
+        grid-template-columns: 1fr;
+      }
+      
+      .log-selector {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🧟 ZombieCoder Agent Dashboard</h1>
+    <p>Real-time Agent Monitoring & Management System</p>
+  </div>
+
+  <div class="dashboard-container">
+    <!-- System Statistics -->
+    <div class="system-stats">
+      <div class="stat-card">
+        <div class="stat-number" id="total-agents">7</div>
+        <div class="stat-label">Total Agents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="online-agents">0</div>
+        <div class="stat-label">Online Agents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="offline-agents">7</div>
+        <div class="stat-label">Offline Agents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="total-requests">0</div>
+        <div class="stat-label">Total Requests</div>
+      </div>
+    </div>
+
+    <!-- Agents Section -->
+    <div class="agents-section">
+      <div class="agents-grid" id="agents-grid">
+        <!-- Agents will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <!-- Logs Section -->
+    <div class="logs-section">
+      <div class="logs-container">
+        <div class="logs-header">
+          <div class="logs-title">📋 System Logs</div>
+          <div class="log-selector" id="log-selector">
+            <div class="log-tab active" data-log="system">System</div>
+            <div class="log-tab" data-log="error">Errors</div>
+            <div class="log-tab" data-log="access">Access</div>
+            <div class="log-tab" data-log="performance">Performance</div>
+          </div>
+        </div>
+        <div class="log-content" id="log-content">
+          <!-- Logs will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script>
+    // Agent configuration
+    const agents = [
+      { 
+        name: "Bengali NLP", 
+        url: "http://localhost:8002",
+        port: 8002,
+        category: "nlp",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Code Generation", 
+        url: "http://localhost:8003",
+        port: 8003,
+        category: "code",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Code Review", 
+        url: "http://localhost:8004",
+        port: 8004,
+        category: "review",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Documentation", 
+        url: "http://localhost:8005",
+        port: 8005,
+        category: "docs",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Testing", 
+        url: "http://localhost:8006",
+        port: 8006,
+        category: "test",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Deployment", 
+        url: "http://localhost:8007",
+        port: 8007,
+        category: "deploy",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      },
+      { 
+        name: "Voice Processor", 
+        url: "http://localhost:8014",
+        port: 8014,
+        category: "voice",
+        endpoints: {
+          health: "/health",
+          status: "/api/status",
+          query: "/query"
+        }
+      }
+    ];
+
+    // Global state
+    let agentStates = {};
+    let totalRequests = 0;
+    let logs = {
+      system: [],
+      error: [],
+      access: [],
+      performance: []
+    };
+
+    // Initialize dashboard
+    async function initDashboard() {
+      await loadAgents();
+      await checkAllAgents();
+      loadLogs();
+      startAutoRefresh();
+      showNotification('Dashboard initialized successfully!', 'success');
+    }
+
+    // Load agents into the grid
+    async function loadAgents() {
+      const agentsGrid = document.getElementById('agents-grid');
+      agentsGrid.innerHTML = '';
+
+      for (let agent of agents) {
+        const agentCard = createAgentCard(agent);
+        agentsGrid.appendChild(agentCard);
+      }
+    }
+
+    // Create agent card HTML
+    function createAgentCard(agent) {
+      const card = document.createElement('div');
+      card.className = 'agent-card';
+      card.id = `agent-${agent.port}`;
+
+      card.innerHTML = `
+        <div class="agent-header">
+          <div class="agent-name">${agent.name}</div>
+          <div class="agent-status status-offline" id="status-${agent.port}">
+            <span class="loading"></span> Checking...
+          </div>
+        </div>
+        <div class="agent-url">${agent.url}</div>
+        <div class="agent-metrics">
+          <div class="metric">
+            <div class="metric-label">Port</div>
+            <div class="metric-value">${agent.port}</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Category</div>
+            <div class="metric-value">${agent.category}</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Uptime</div>
+            <div class="metric-value" id="uptime-${agent.port}">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Requests</div>
+            <div class="metric-value" id="requests-${agent.port}">0</div>
+          </div>
+        </div>
+        <div class="agent-actions">
+          <button class="btn btn-primary" onclick="testAgent(${agent.port})">
+            🧪 Test
+          </button>
+          <button class="btn btn-secondary" onclick="viewLogs(${agent.port})">
+            📋 Logs
+          </button>
+          <button class="btn btn-danger" onclick="restartAgent(${agent.port})">
+            🔄 Restart
+          </button>
+        </div>
+      `;
+
+      return card;
+    }
+
+    // Check all agents health
+    async function checkAllAgents() {
+      const promises = agents.map(agent => checkAgentHealth(agent));
+      await Promise.all(promises);
+      updateSystemStats();
+    }
+
+    // Check individual agent health
+    async function checkAgentHealth(agent) {
+      try {
+        const response = await fetch(`${agent.url}${agent.endpoints.health}`, {
+          method: 'GET',
+          timeout: 5000
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          updateAgentStatus(agent.port, true, data);
+          addLog('system', `✅ ${agent.name} is healthy`);
+        } else {
+          updateAgentStatus(agent.port, false, null);
+          addLog('error', `❌ ${agent.name} health check failed: ${response.status}`);
+        }
+      } catch (error) {
+        updateAgentStatus(agent.port, false, null);
+        addLog('error', `❌ ${agent.name} connection failed: ${error.message}`);
+      }
+    }
+
+    // Update agent status display
+    function updateAgentStatus(port, isOnline, data) {
+      const statusElement = document.getElementById(`status-${port}`);
+      const uptimeElement = document.getElementById(`uptime-${port}`);
+      
+      if (isOnline) {
+        statusElement.className = 'agent-status status-online';
+        statusElement.innerHTML = '🟢 Online';
+        uptimeElement.textContent = 'Active';
+        agentStates[port] = { online: true, data, lastCheck: new Date() };
+      } else {
+        statusElement.className = 'agent-status status-offline';
+        statusElement.innerHTML = '🔴 Offline';
+        uptimeElement.textContent = 'Down';
+        agentStates[port] = { online: false, data: null, lastCheck: new Date() };
+      }
+    }
+
+    // Test agent functionality
+    async function testAgent(port) {
+      const agent = agents.find(a => a.port === port);
+      if (!agent) return;
+
+      showNotification(`Testing ${agent.name}...`, 'info');
+
+      try {
+        let endpoint, requestBody;
+        
+        // Set test parameters based on agent type
+        endpoint = agent.endpoints.query;
+        switch (agent.category) {
+          case 'nlp':
+            requestBody = { query: 'হ্যালো, আপনি কীভাবে আছেন?' };
+            break;
+          case 'code':
+            requestBody = { query: 'Write a Python function to add two numbers' };
+            break;
+          case 'review':
+            requestBody = { query: 'Review this code: def foo(x): return x+1' };
+            break;
+          case 'docs':
+            requestBody = { query: 'Generate API docs for user login' };
+            break;
+          case 'test':
+            requestBody = { query: 'Write pytest for add(x,y)' };
+            break;
+          case 'deploy':
+            requestBody = { query: 'Write a Dockerfile for Flask app' };
+            break;
+          case 'voice':
+            requestBody = { query: 'Convert text to speech: Hello World' };
+            break;
+          default:
+            requestBody = { query: 'test message' };
+        }
+
+        const response = await fetch(`${agent.url}${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          showNotification(`${agent.name} test successful!`, 'success');
+          addLog('access', `✅ ${agent.name} test completed successfully`);
+          
+          // Update request count
+          totalRequests++;
+          const requestsElement = document.getElementById(`requests-${port}`);
+          if (requestsElement) {
+            requestsElement.textContent = parseInt(requestsElement.textContent) + 1;
+          }
+        } else {
+          showNotification(`${agent.name} test failed!`, 'error');
+          addLog('error', `❌ ${agent.name} test failed: ${response.status}`);
+        }
+      } catch (error) {
+        showNotification(`${agent.name} test error: ${error.message}`, 'error');
+        addLog('error', `❌ ${agent.name} test error: ${error.message}`);
+      }
+    }
+
+    // View agent logs
+    function viewLogs(port) {
+      const agent = agents.find(a => a.port === port);
+      if (!agent) return;
+
+      showNotification(`Loading logs for ${agent.name}...`, 'info');
+      addLog('access', `📋 Viewing logs for ${agent.name}`);
+      
+      // Switch to access logs tab
+      document.querySelectorAll('.log-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector('[data-log="access"]').classList.add('active');
+      loadLogs();
+    }
+
+    // Restart agent (simulation)
+    function restartAgent(port) {
+      const agent = agents.find(a => a.port === port);
+      if (!agent) return;
+
+      showNotification(`Restarting ${agent.name}...`, 'info');
+      addLog('system', `🔄 Restarting ${agent.name}`);
+      
+      // Simulate restart
+      setTimeout(() => {
+        checkAgentHealth(agent);
+        showNotification(`${agent.name} restarted successfully!`, 'success');
+        addLog('system', `✅ ${agent.name} restarted successfully`);
+      }, 2000);
+    }
+
+    // Update system statistics
+    function updateSystemStats() {
+      const onlineCount = Object.values(agentStates).filter(state => state.online).length;
+      const offlineCount = agents.length - onlineCount;
+
+      document.getElementById('online-agents').textContent = onlineCount;
+      document.getElementById('offline-agents').textContent = offlineCount;
+      document.getElementById('total-requests').textContent = totalRequests;
+    }
+
+    // Load logs
+    function loadLogs() {
+      const activeTab = document.querySelector('.log-tab.active');
+      const logType = activeTab ? activeTab.dataset.log : 'system';
+      const logContent = document.getElementById('log-content');
+      
+      logContent.innerHTML = '';
+      
+      if (logs[logType] && logs[logType].length > 0) {
+        logs[logType].forEach(entry => {
+          const logEntry = document.createElement('div');
+          logEntry.className = `log-entry ${entry.type}`;
+          logEntry.innerHTML = `
+            <span style="color: #888;">${entry.timestamp}</span>
+            <span style="margin-left: 10px;">${entry.message}</span>
+          `;
+          logContent.appendChild(logEntry);
+        });
+      } else {
+        logContent.innerHTML = '<div class="log-entry info">No logs available for this category.</div>';
+      }
+    }
+
+    // Add log entry
+    function addLog(type, message) {
+      const timestamp = new Date().toLocaleTimeString();
+      logs[type].push({ timestamp, message, type });
+      
+      // Keep only last 100 entries
+      if (logs[type].length > 100) {
+        logs[type] = logs[type].slice(-100);
+      }
+      
+      // Auto-load if current tab matches
+      const activeTab = document.querySelector('.log-tab.active');
+      if (activeTab && activeTab.dataset.log === type) {
+        loadLogs();
+      }
+    }
+
+    // Start auto-refresh
+    function startAutoRefresh() {
+      // Refresh every 10 seconds
+      setInterval(() => {
+        checkAllAgents();
+      }, 10000);
+
+      // Add periodic system logs
+      setInterval(() => {
+        addLog('system', `🔄 Auto-refresh: ${new Date().toLocaleString()}`);
+      }, 30000);
+    }
+
+    // Show notification
+    function showNotification(message, type = 'info') {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = `notification ${type}`;
+      notification.classList.add('show');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    // Log tab switching
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.log-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.log-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          loadLogs();
+        });
+      });
+    });
+
+    // Initialize dashboard when page loads
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  </script>
+</body>
+</html>

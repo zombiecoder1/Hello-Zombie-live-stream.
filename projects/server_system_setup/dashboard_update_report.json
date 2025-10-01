@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-09-13T12:21:38.544383",
+  "dashboard_file": "all.html",
+  "system_status": {
+    "main_server": {
+      "capabilities": [
+        "editor",
+        "bug_hunter",
+        "coding",
+        "debugging",
+        "frontend",
+        "architecture",
+        "database",
+        "api",
+        "security",
+        "performance",
+        "devops",
+        "testing",
+        "voice",
+        "real_time"
+      ],
+      "family_members": [
+        "\u09b8\u09be\u09b9\u09a8 \u09ad\u09be\u0987",
+        "\u09ae\u09c1\u09b8\u0995\u09be\u09a8",
+        "\u09ad\u09be\u09ac\u09bf",
+        "\u09aa\u09b0\u09bf\u09ac\u09be\u09b0"
+      ],
+      "language": "bengali_english_mixed",
+      "last_update": 1757744498.5325472,
+      "name": "ZombieCoder Agent (\u09b8\u09be\u09b9\u09a8 \u09ad\u09be\u0987)",
+      "ollama_url": "http://localhost:11434",
+      "personalities": [
+        "elder_brother",
+        "friend",
+        "teacher",
+        "doctor",
+        "engineer",
+        "guard",
+        "coach",
+        "professional"
+      ],
+      "resource_status": true,
+      "status": "active",
+      "total_capabilities": 14
+    },
+    "workstation": null,
+    "agents": null,
+    "timestamp": "2025-09-13T12:21:38.543467"
+  },
+  "update_status": "success"
+}

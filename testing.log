@@ -1,0 +1,15 @@
+INFO:root:Testing query: Write pytest for add(x,y)
+INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো
+INFO:root:Testing query: Write pytest for add(x,y)
+INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো
+INFO:root:Testing query: Write pytest for add(x,y)
+INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো
+INFO:root:Testing query: Write pytest for add function
+INFO:root:Testing query: Write pytest for add(x,y)
+INFO:root:Testing query: পাইথন ফাংশনের জন্য একটি টেস্ট কেস লেখো
+2025-09-30 06:11:32,164 - INFO - {"ts": 1759191092.1565325, "session": "48c2a10c-0300-4eaa-af42-ca28caf6f882", "prompt": "Write pytest for add(x,y)", "response_len": 1142, "model": "test-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:11:32,176 - INFO - {"ts": 1759191092.16789, "session": "chatcmpl-dba7ca32-2f3c-4808-a656-0c113da9f9fa", "prompt": "\u098f\u0995\u099f\u09bf \u0987\u0989\u09a8\u09bf\u099f \u099f\u09c7\u09b8\u09cd\u099f \u0989\u09a6\u09be\u09b9\u09b0\u09a3 \u09b2\u09bf\u0996\u09cb", "response_len": 429, "model": "test-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,097 - INFO - {"ts": 1759191376.0890355, "session": "886b6b4c-cc9f-4876-885b-cef35291f62e", "prompt": "Write pytest for add(x,y)", "response_len": 1142, "model": "test-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:16:16,111 - INFO - {"ts": 1759191376.102789, "session": "chatcmpl-ec7322cd-fe64-4ed5-9027-0ccb9bb4cd69", "prompt": "\u098f\u0995\u099f\u09bf \u0987\u0989\u09a8\u09bf\u099f \u099f\u09c7\u09b8\u09cd\u099f \u0989\u09a6\u09be\u09b9\u09b0\u09a3 \u09b2\u09bf\u0996\u09cb", "response_len": 429, "model": "test-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,278 - INFO - {"ts": 1759193226.2672563, "session": "f9ed64d3-cef9-4306-98d2-adeace6821eb", "prompt": "Write pytest for add(x,y)", "response_len": 1142, "model": "test-generator-v1", "cached": false, "duration_ms": 0}
+2025-09-30 06:47:06,291 - INFO - {"ts": 1759193226.2825832, "session": "chatcmpl-99b11ba8-6c66-4a3b-a406-3044e5cd638f", "prompt": "\u098f\u0995\u099f\u09bf \u0987\u0989\u09a8\u09bf\u099f \u099f\u09c7\u09b8\u09cd\u099f \u0989\u09a6\u09be\u09b9\u09b0\u09a3 \u09b2\u09bf\u0996\u09cb", "response_len": 429, "model": "test-generator-v1", "cached": false, "duration_ms": 0}

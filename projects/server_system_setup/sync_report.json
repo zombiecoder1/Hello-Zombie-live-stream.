@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-09-13T12:22:36.012082",
+  "sync_database": "input_output_sync.db",
+  "agents": [
+    "programming",
+    "bestpractices",
+    "verifier",
+    "conversational",
+    "ops"
+  ],
+  "sync_interval": 5,
+  "sync_status": {
+    "programming": {
+      "agent_id": "programming",
+      "input_count": 0,
+      "output_count": 0,
+      "last_sync": "2025-09-13T12:22:35.875675",
+      "status": "active"
+    },
+    "bestpractices": {
+      "agent_id": "bestpractices",
+      "input_count": 0,
+      "output_count": 0,
+      "last_sync": "2025-09-13T12:22:35.887501",
+      "status": "active"
+    },
+    "verifier": {
+      "agent_id": "verifier",
+      "input_count": 0,
+      "output_count": 0,
+      "last_sync": "2025-09-13T12:22:35.901539",
+      "status": "active"
+    },
+    "conversational": {
+      "agent_id": "conversational",
+      "input_count": 0,
+      "output_count": 0,
+      "last_sync": "2025-09-13T12:22:35.912253",
+      "status": "active"
+    },
+    "ops": {
+      "agent_id": "ops",
+      "input_count": 0,
+      "output_count": 0,
+      "last_sync": "2025-09-13T12:22:35.924146",
+      "status": "active"
+    }
+  },
+  "system_status": "active"
+}

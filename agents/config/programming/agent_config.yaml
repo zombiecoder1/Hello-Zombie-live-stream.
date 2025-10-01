@@ -1,0 +1,51 @@
+# Programming Agent Configuration
+name: programming
+version: 1.0
+created: 2025-09-13T12:40:52.973761
+
+# ZombieCoder Metadata
+metadata:
+  name: ZombieCoder
+  tagline: "যেখানে কোড ও কথা বলে"
+  owner: Sahon Srabon
+  company: Developer Zone
+  contact: "+880 1323-626282"
+  website: "https://zombiecoder.my.id/"
+  email: "infi@zombiecoder.my.id"
+  agent_type: "programming"
+  description: "AI-powered programming assistant for code generation and analysis"
+
+# Memory Settings
+memory:
+  database: memory.db
+  cache_size: 100MB
+  isolation_level: strict
+  backup_frequency: daily
+
+# Access Control
+access_control:
+  read_only: false
+  cross_agent_access: false
+  admin_override: false
+
+# Performance Settings
+performance:
+  max_memory_usage: 512MB
+  cleanup_interval: 3600
+  log_level: info
+
+# Security Settings
+security:
+  encryption: true
+  access_logging: true
+  audit_trail: true
+
+# AI Model Settings
+ai_model:
+  provider: local
+  endpoint: http://localhost:5252
+  model: llama2
+  fallback_enabled: true
+  timeout: 30
+  max_tokens: 1000
+  temperature: 0.7

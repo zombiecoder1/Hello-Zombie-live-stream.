@@ -1,0 +1,58 @@
+# 🧟 Agent Error Log
+
+## Agent Error Tracking
+
+**Date**: $(date)  
+**Status**: Ready for Error Logging  
+**Zombie Leader**: কলিজা  
+
+---
+
+## Error Log Format:
+
+```
+[Timestamp] Agent: [Agent Name] - Error: [Error Description] - Severity: [HIGH/MEDIUM/LOW] - Status: [RESOLVED/IN_PROGRESS/UNRESOLVED]
+```
+
+---
+
+## Example Entries:
+
+```
+[2024-09-13 12:10:00] Agent: Programming Agent - Error: Model optimization failed - Severity: HIGH - Status: IN_PROGRESS
+[2024-09-13 12:11:00] Agent: Best Practices Agent - Error: Cloud service blocking failed - Severity: HIGH - Status: IN_PROGRESS
+[2024-09-13 12:12:00] Agent: Verifier Agent - Error: Memory isolation setup failed - Severity: MEDIUM - Status: IN_PROGRESS
+```
+
+---
+
+## Error Severity Levels:
+
+- **HIGH** - Critical errors that stop work
+- **MEDIUM** - Errors that affect progress
+- **LOW** - Minor errors that don't affect work
+
+---
+
+## Error Status Options:
+
+- **RESOLVED** - Error fixed
+- **IN_PROGRESS** - Working on fixing
+- **UNRESOLVED** - Error not yet addressed
+
+---
+
+## Error Reporting Commands:
+
+```bash
+# Log error
+echo "$(date): Agent: [Your Name] - Error: [Error Description] - Severity: [HIGH/MEDIUM/LOW] - Status: [RESOLVED/IN_PROGRESS/UNRESOLVED]" >> logs/agent_error.log
+
+# Update error status
+echo "$(date): Agent: [Your Name] - Error: [Error Description] - Status: RESOLVED" >> logs/agent_error.log
+```
+
+---
+
+**Ready for Error Logging!** 🚀
+2025-09-13 12:14:34.205801: Agent: Best Practices Agent - Error: Failed to add blocking entries: [Errno 13] Permission denied: '/etc/hosts' - Severity: HIGH - Status: UNRESOLVED

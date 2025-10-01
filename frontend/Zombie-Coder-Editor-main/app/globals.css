@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ZombieCoder Custom Styles */
+.font-bengali {
+  font-family: "Kalpurush", "SolaimanLipi", "Mukti", "Noto Sans Bengali", "Bangla Sangam MN", sans-serif;
+}
+
+/* Voice Wave Animation */
+.voice-wave {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: #22c55e;
+  margin: 0 1px;
+  animation: voice-wave 1s ease-in-out infinite;
+}
+
+.voice-wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.voice-wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.voice-wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.voice-wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Monaco Editor Customizations */
+.monaco-editor {
+  --vscode-editor-background: #1e1e1e !important;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Code", "Droid Sans Mono", "Courier New", monospace !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d30;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #464647;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5c;
+}
+
+/* ZombieCoder Glow Effects */
+.zombie-glow {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.zombie-pulse {
+  animation: zombie-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes zombie-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Code Syntax Highlighting Enhancements */
+.monaco-editor .mtk1 {
+  color: #d4d4d4;
+} /* Default text */
+.monaco-editor .mtk2 {
+  color: #569cd6;
+} /* Keywords */
+.monaco-editor .mtk3 {
+  color: #ce9178;
+} /* Strings */
+.monaco-editor .mtk4 {
+  color: #6a9955;
+} /* Comments */
+.monaco-editor .mtk5 {
+  color: #b5cea8;
+} /* Numbers */
+.monaco-editor .mtk6 {
+  color: #4ec9b0;
+} /* Types */
+.monaco-editor .mtk7 {
+  color: #dcdcaa;
+} /* Functions */
+.monaco-editor .mtk8 {
+  color: #9cdcfe;
+} /* Variables */
+
+/* ZombieCoder Branding */
+.zombiecoder-brand {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.font-mono {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Code", "Droid Sans Mono", "Courier New", monospace !important;
+}
