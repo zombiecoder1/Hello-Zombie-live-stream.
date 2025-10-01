@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZombieCoder Server Management Dashboard</title>
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #007BFF;
+      --dark-color: #333;
+      --light-color: #f9f9f9;
+      --border-color: #ddd;
+      --hover-color: #388E3C;
+      --danger-color: #e74c3c;
+      --warning-color: #f39c12;
+      --success-color: #27ae60;
+      --info-color: #3498db;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 300;
+    }
+
+    .subtitle {
+      margin: 5px 0 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .status-bar {
+      background-color: var(--info-color);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--success-color);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .navbar {
+      background-color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 15px;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar button:hover {
+      background-color: #00408d;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar button.active {
+      background-color: var(--primary-color);
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .commands-container {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding-bottom: 100px;
+    }
+
+    .category-section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: slideDown 0.6s ease-out;
+      border: 1px solid var(--border-color);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category-header {
+      background: linear-gradient(135deg, var(--secondary-color), #0056b3);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-header:hover {
+      background: linear-gradient(135deg, #0056b3, var(--secondary-color));
+    }
+
+    .category-header h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .category-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .command {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f9fa;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .command:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+      border-color: var(--secondary-color);
+    }
+
+    .command.selected {
+      background-color: #e3f2fd;
+      border-color: var(--primary-color);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);
+    }
+
+    .command-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .command pre {
+      margin: 0;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      background-color: #2d3748;
+      color: #e2e8f0;
+      padding: 12px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-size: 13px;
+      line-height: 1.4;
+      border: 1px solid #4a5568;
+    }
+
+    .command-details {
+      font-size: 13px;
+      color: #666;
+      padding: 8px 0;
+      font-style: italic;
+    }
+
+    .command-actions {
+      display: flex;
+      gap: 8px;
+      margin-left: 15px;
+    }
+
+    .command button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .copy-btn {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--hover-color);
+      transform: scale(1.05);
+    }
+
+    .edit-btn {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    .edit-btn:hover {
+      background-color: #e67e22;
+      transform: scale(1.05);
+    }
+
+    .delete-btn {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    .floating-actions {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .floating-actions button {
+      padding: 15px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .add-command-btn {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .add-command-btn:hover {
+      background-color: var(--hover-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+    }
+
+    .copy-selected-btn {
+      background-color: var(--info-color);
+      color: white;
+    }
+
+    .copy-selected-btn:hover {
+      background-color: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+    }
+
+    .delete-selected-btn {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .delete-selected-btn:hover {
+      background-color: #c0392b;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: 24px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--danger-color);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--dark-color);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .form-actions button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .save-btn {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .save-btn:hover {
+      background-color: var(--hover-color);
+      transform: translateY(-2px);
+    }
+
+    .cancel-btn {
+      background-color: #999;
+      color: white;
+    }
+
+    .cancel-btn:hover {
+      background-color: #777;
+      transform: translateY(-2px);
+    }
+
+    .search-container {
+      padding: 15px 20px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px;
+      color: #666;
+    }
+
+    .empty-state h3 {
+      margin: 0 0 10px 0;
+      color: var(--dark-color);
+    }
+
+    .selected-count {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .port-info {
+      background-color: #e8f5e8;
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+
+    .port-info h4 {
+      margin: 0 0 10px 0;
+      color: var(--primary-color);
+    }
+
+    .port-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .port-item {
+      background-color: white;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        justify-content: flex-start;
+      }
+
+      .commands-container {
+        padding: 15px;
+      }
+
+      .command {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .command-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .floating-actions {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .floating-actions button {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .port-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <header>
+      <h1>🤖 ZombieCoder Server Management Dashboard</h1>
+      <p class="subtitle">OpenAI Gateway & Multi-Agent System Control Panel</p>
+    </header>
+
+    <div class="status-bar">
+      <div class="status-indicator">
+        <div class="status-dot"></div>
+        <span>System Status: Online</span>
+      </div>
+      <div>
+        <strong>Gateway:</strong> http://127.0.0.1:8001 |
+        <strong>Agents:</strong> 8002-8007, 8014
+      </div>
+    </div>
+
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="🔍 Search commands, ports, or endpoints..."
+        id="search-input">
+    </div>
+
+    <div class="navbar" id="category-navbar">
+      <button onclick="showCommands('all')" class="active">All Commands</button>
+      <button onclick="showCommands('server-management')">Server Management</button>
+      <button onclick="showCommands('individual-agents')">Individual Agents</button>
+      <button onclick="showCommands('testing-monitoring')">Testing & Monitoring</button>
+      <button onclick="showCommands('extension-integration')">Extension Integration</button>
+      <button onclick="showCommands('troubleshooting')">Troubleshooting</button>
+    </div>
+
+    <div class="commands-container" id="commands-section"></div>
+  </div>
+
+  <div class="selected-count" id="selected-count" style="display: none;">0 selected</div>
+
+  <div class="floating-actions">
+    <button class="delete-selected-btn" onclick="deleteSelectedCommands()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+        <path fill-rule="evenodd"
+          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+      </svg>
+      Delete
+    </button>
+    <button class="copy-selected-btn" onclick="copySelectedCommands()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1H2z" />
+      </svg>
+      Copy
+    </button>
+    <button class="add-command-btn" onclick="openAddModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+      </svg>
+      Add
+    </button>
+  </div>
+
+  <!-- Add/Edit Command Modal -->
+  <div class="modal" id="command-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Add New Command</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="command-form">
+        <input type="hidden" id="edit-index">
+        <div class="form-group">
+          <label for="command-category">Category</label>
+          <select id="command-category" required>
+            <option value="server-management">Server Management</option>
+            <option value="individual-agents">Individual Agents</option>
+            <option value="testing-monitoring">Testing & Monitoring</option>
+            <option value="extension-integration">Extension Integration</option>
+            <option value="troubleshooting">Troubleshooting</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="command-text">Command</label>
+          <textarea id="command-text" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="command-details">Details (Optional)</label>
+          <textarea id="command-details" placeholder="Add description or notes about this command"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Initialize commands from localStorage or use default commands
+    let commands = JSON.parse(localStorage.getItem('zombiecoderCommands')) || {
+      'server-management': [
+        {
+          command: 'cd "E:\\OpenAI Gateway"',
+          details: 'Navigate to ZombieCoder project root directory (Windows PowerShell/CMD)'
+        },
+        {
+          command: '& "C:\\Program Files\\Git\\bin\\bash.exe" -c "./start_agents.sh"',
+          details: 'Start ALL agents + Gateway using Git Bash (Windows compatible). Starts: Gateway(8001), Bengali-NLP(8002), Code-Generation(8003), Code-Review(8004), Documentation(8005), Testing(8006), Deployment(8007), Voice-Processor(8014)'
+        },
+        {
+          command: '& "C:\\Program Files\\Git\\bin\\bash.exe" -c "./stop_agents.sh"',
+          details: 'Stop ALL agents + Gateway using Git Bash. Kills all Python processes running on ports 8001-8007, 8014'
+        },
+        {
+          command: '$env:PYTHONIOENCODING="utf-8"; .\\venv\\Scripts\\python.exe zombie_openai_router.py',
+          details: 'Start OpenAI Gateway individually (Port 8001). Sets UTF-8 encoding to prevent emoji errors'
+        },
+        {
+          command: 'Get-Process python | Where-Object {$_.ProcessName -eq "python"} | Stop-Process -Force',
+          details: 'Force kill all Python processes (Emergency stop - use when normal stop fails)'
+        }
+      ],
+      'individual-agents': [
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\bengali-nlp\\main.py',
+          details: 'Start Bengali NLP Agent (Port 8002) - Handles Bengali language processing, translation, and NLP tasks'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\code-generation\\main.py',
+          details: 'Start Code Generation Agent (Port 8003) - Generates code snippets, functions, and complete programs'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\code-review\\main.py',
+          details: 'Start Code Review Agent (Port 8004) - Reviews code quality, suggests improvements, and finds bugs'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\documentation\\main.py',
+          details: 'Start Documentation Agent (Port 8005) - Generates documentation, comments, and technical writing'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\testing\\main.py',
+          details: 'Start Testing Agent (Port 8006) - Creates test cases, unit tests, and testing strategies'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe agents\\deployment\\main.py',
+          details: 'Start Deployment Agent (Port 8007) - Handles deployment scripts, Docker configs, and CI/CD'
+        },
+        {
+          command: '.\\venv\\Scripts\\python.exe services\\voice-processor\\main.py',
+          details: 'Start Voice Processor Service (Port 8014) - Processes audio, speech-to-text, and voice commands'
+        }
+      ],
+      'testing-monitoring': [
+        {
+          command: '$ports = 8001,8002,8003,8004,8005,8006,8007,8014; foreach($p in $ports){ (Test-NetConnection -ComputerName localhost -Port $p).TcpTestSucceeded | ForEach-Object { Write-Host "Port $p:`t" ($_ ? "UP" : "DOWN") } }',
+          details: 'Quick port status check (PowerShell) - Tests if all ZombieCoder ports are listening'
+        },
+        {
+          command: '$ports = 8001,8002,8003,8004,8005,8006,8007,8014; foreach($p in $ports){ try{ $r = Invoke-WebRequest -Uri "http://127.0.0.1:$p/health" -UseBasicParsing -TimeoutSec 3; Write-Host "[OK] :$p ->" $r.StatusCode } catch { Write-Host "[ERR]:$p" } }',
+          details: 'Health check all services (PowerShell) - Tests /health endpoint on all agents and gateway'
+        },
+        {
+          command: '$env:PYTHONIOENCODING="utf-8"; Invoke-RestMethod -Uri "http://127.0.0.1:8001/v1/chat/completions" -Method POST -ContentType "application/json" -Headers @{ Authorization = "Bearer zombiecoder-gateway-token" } -Body (@{ model = "gpt-3.5-turbo"; messages = @(@{ role = "user"; content = "Say hello from ZombieCoder" }) } | ConvertTo-Json -Depth 5)',
+          details: 'End-to-end test via Gateway (PowerShell) - Tests complete request flow through OpenAI Gateway'
+        },
+        {
+          command: 'curl -N http://127.0.0.1:8001/v1/chat/completions -H "Content-Type: application/json" -H "Authorization: Bearer zombiecoder-gateway-token" -d "{\\"model\\":\\"gpt-3.5-turbo\\",\\"messages\\":[{\\"role\\":\\"user\\",\\"content\\":\\"Stream a short reply\\"}],\\"stream\\":true}"',
+          details: 'OpenAI-style streaming test (curl) - Tests Server-Sent Events streaming response'
+        },
+        {
+          command: '$body = @{ model = "gpt-3.5-turbo"; messages = @(@{ role="user"; content="Latency check" }) } | ConvertTo-Json -Depth 5; $t = Measure-Command { Invoke-RestMethod -Uri "http://127.0.0.1:8001/v1/chat/completions" -Method POST -ContentType "application/json" -Headers @{ Authorization = "Bearer zombiecoder-gateway-token" } -Body $body | Out-Null }; Write-Host ("Latency: {0:N0} ms" -f $t.TotalMilliseconds)',
+          details: 'Gateway latency measurement (PowerShell) - Measures response time for performance monitoring'
+        },
+        {
+          command: 'Get-Content logs\\*.log -Wait',
+          details: 'Tail all agent logs (PowerShell) - Real-time monitoring of all agent log files'
+        },
+        {
+          command: 'Invoke-RestMethod -Uri "http://127.0.0.1:8001/v1/models" -Headers @{ Authorization = "Bearer zombiecoder-gateway-token" }',
+          details: 'List available models (PowerShell) - Shows all available AI models through the gateway'
+        }
+      ],
+      'extension-integration': [
+        {
+          command: '// VS Code Extension Integration (TypeScript)\nconst response = await fetch("http://127.0.0.1:8001/v1/chat/completions", {\n  method: "POST",\n  headers: {\n    "Content-Type": "application/json",\n    "Authorization": "Bearer zombiecoder-gateway-token"\n  },\n  body: JSON.stringify({\n    model: "gpt-3.5-turbo",\n    messages: [{ role: "user", content: "Generate a React component" }],\n    stream: true\n  })\n});\n\nconst reader = response.body?.getReader();\nwhile (true) {\n  const { done, value } = await reader.read();\n  if (done) break;\n  const chunk = new TextDecoder().decode(value);\n  console.log(chunk);\n}',
+          details: 'VS Code Extension integration sample - Complete TypeScript code for integrating ZombieCoder with VS Code extensions'
+        },
+        {
+          command: '// Cursor AI Integration (JavaScript)\nconst zombiecoderAPI = {\n  baseURL: "http://127.0.0.1:8001",\n  token: "zombiecoder-gateway-token",\n  \n  async chat(messages, options = {}) {\n    const response = await fetch(`${this.baseURL}/v1/chat/completions`, {\n      method: "POST",\n      headers: {\n        "Content-Type": "application/json",\n        "Authorization": `Bearer ${this.token}`\n      },\n      body: JSON.stringify({\n        model: options.model || "gpt-3.5-turbo",\n        messages,\n        stream: options.stream || false,\n        temperature: options.temperature || 0.7\n      })\n    });\n    return response.json();\n  }\n};',
+          details: 'Cursor AI integration wrapper - JavaScript class for easy integration with Cursor AI or other editors'
+        },
+        {
+          command: '// Web Portal Integration (React)\nimport { useState } from \'react\';\n\nfunction ZombieCoderChat() {\n  const [messages, setMessages] = useState([]);\n  const [loading, setLoading] = useState(false);\n  \n  const sendMessage = async (content) => {\n    setLoading(true);\n    try {\n      const response = await fetch(\'http://127.0.0.1:8001/v1/chat/completions\', {\n        method: \'POST\',\n        headers: {\n          \'Content-Type\': \'application/json\',\n          \'Authorization\': \'Bearer zombiecoder-gateway-token\'\n        },\n        body: JSON.stringify({\n          model: \'gpt-3.5-turbo\',\n          messages: [...messages, { role: \'user\', content }],\n          stream: false\n        })\n      });\n      const data = await response.json();\n      setMessages(prev => [...prev, { role: \'assistant\', content: data.choices[0].message.content }]);\n    } catch (error) {\n      console.error(\'Error:\', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n  \n  return (\n    <div className="chat-container">\n      {/* Chat UI components */}\n    </div>\n  );\n}',
+          details: 'React web portal integration - Complete React component for building web-based chat interface'
+        },
+        {
+          command: '// API Endpoints Reference\n// Gateway Endpoints:\n// GET  http://127.0.0.1:8001/health\n// GET  http://127.0.0.1:8001/v1/models\n// POST http://127.0.0.1:8001/v1/chat/completions\n//\n// Individual Agent Endpoints:\n// GET  http://127.0.0.1:8002/health (Bengali NLP)\n// GET  http://127.0.0.1:8003/health (Code Generation)\n// GET  http://127.0.0.1:8004/health (Code Review)\n// GET  http://127.0.0.1:8005/health (Documentation)\n// GET  http://127.0.0.1:8006/health (Testing)\n// GET  http://127.0.0.1:8007/health (Deployment)\n// GET  http://127.0.0.1:8014/health (Voice Processor)',
+          details: 'Complete API endpoints reference - All available endpoints for integration with external applications'
+        }
+      ],
+      'troubleshooting': [
+        {
+          command: 'netstat -ano | Select-String ":8004"',
+          details: 'Find process using port 8004 (PowerShell) - Use when Code Review agent fails to start due to port conflict'
+        },
+        {
+          command: 'taskkill /F /PID <PID>',
+          details: 'Kill specific process by PID (PowerShell) - Replace <PID> with actual process ID from netstat command'
+        },
+        {
+          command: 'netstat -ano | Select-String ":8004"; taskkill /F /PID <PID>; .\\venv\\Scripts\\python.exe agents\\code-review\\main.py',
+          details: 'Complete troubleshooting sequence for Code Review agent - Find, kill, and restart in one command'
+        },
+        {
+          command: 'Get-Content logs\\agent_error.log -Tail 50',
+          details: 'View recent error logs (PowerShell) - Shows last 50 lines of error log for debugging'
+        },
+        {
+          command: 'Get-Content logs\\agent_work.log -Tail 50',
+          details: 'View recent work logs (PowerShell) - Shows last 50 lines of work log for monitoring agent activity'
+        },
+        {
+          command: 'Remove-Item logs\\*.log -Force; & "C:\\Program Files\\Git\\bin\\bash.exe" -c "./start_agents.sh"',
+          details: 'Clear logs and restart all services (PowerShell + Git Bash)'
+        }
+      ]
+    };
+
+    // Save commands to localStorage
+    function saveCommands() {
+      localStorage.setItem('zombiecoderCommands', JSON.stringify(commands));
+    }
+
+    // Show commands based on category
+    function showCommands(category) {
+      const commandsSection = document.getElementById("commands-section");
+      commandsSection.innerHTML = '';
+
+      // Update active button
+      document.querySelectorAll('#category-navbar button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      if (event && event.target) {
+        event.target.classList.add('active');
+      } else {
+        // Fallback: mark matching button active
+        const btn = Array.from(document.querySelectorAll('#category-navbar button')).find(b => (b.getAttribute('onclick') || '').includes(`'${category}'`));
+        if (btn) btn.classList.add('active');
+      }
+
+      if (category === 'all') {
+        Object.keys(commands).forEach(cat => {
+          if (commands[cat] && commands[cat].length > 0) {
+            const categoryHTML = createCategoryHTML(cat, commands[cat]);
+            commandsSection.innerHTML += categoryHTML;
+          }
+        });
+      } else {
+        if (commands[category] && commands[category].length > 0) {
+          commandsSection.innerHTML = createCategoryHTML(category, commands[category]);
+        } else {
+          commandsSection.innerHTML = `
+            <div class="empty-state">
+              <h3>No commands found</h3>
+              <p>Add a new command to get started!</p>
+            </div>
+          `;
+        }
+      }
+      updateSelectedCount();
+      saveCommands();
+    }
+
+    // Create HTML for a category section
+    function createCategoryHTML(category, categoryCommands) {
+      let html = `
+        <div class="category-section">
+          <div class="category-header" onclick="toggleCategory('${category}')">
+            <h3>${formatCategoryName(category)}</h3>
+            <span>▼</span>
+          </div>
+          <div class="category-content" id="${category}-content">
+      `;
+
+      categoryCommands.forEach((cmdObj, index) => {
+        html += createCommandHTML(cmdObj, category, index);
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+
+      return html;
+    }
+
+    // Toggle category visibility
+    function toggleCategory(category) {
+      const content = document.getElementById(`${category}-content`);
+      const header = content.previousElementSibling;
+      if (content.style.display === 'none') {
+        content.style.display = 'flex';
+        header.querySelector('span').textContent = '▼';
+      } else {
+        content.style.display = 'none';
+        header.querySelector('span').textContent = '▶';
+      }
+    }
+
+    // Format category name for display
+    function formatCategoryName(category) {
+      return category.replace(/-/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase())
+        .replace('Js', 'JS')
+        .replace('Db', 'DB');
+    }
+
+    // Create HTML for a single command
+    function createCommandHTML(cmdObj, category, index) {
+      const safeCommandForAttr = (cmdObj.command || '').replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n");
+      return `
+        <div class="command" id="command-${category}-${index}" onclick="toggleCommandSelection('${category}', ${index}, event)">
+          <div class="command-content">
+            <pre>${cmdObj.command}</pre>
+            ${cmdObj.details ? `<div class="command-details">${cmdObj.details}</div>` : ''}
+          </div>
+          <div class="command-actions">
+            <button class="copy-btn" onclick="copyCommand('${safeCommandForAttr}', event)">Copy</button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Toggle command selection
+    function toggleCommandSelection(category, index, event) {
+      if (event.target.tagName === 'BUTTON') {
+        return;
+      }
+      const commandEl = document.getElementById(`command-${category}-${index}`);
+      commandEl.classList.toggle('selected');
+      updateSelectedCount();
+    }
+
+    // Update selected commands count display
+    function updateSelectedCount() {
+      const selectedCount = document.querySelectorAll('.command.selected').length;
+      const countElement = document.getElementById('selected-count');
+      if (selectedCount > 0) {
+        countElement.textContent = `${selectedCount} selected`;
+        countElement.style.display = 'block';
+      } else {
+        countElement.style.display = 'none';
+      }
+    }
+
+    // Copy command to clipboard
+    function copyCommand(command, event) {
+      event.stopPropagation();
+      navigator.clipboard.writeText(command).then(() => {
+        showToast('Command copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Copy all selected commands
+    function copySelectedCommands() {
+      const selectedCommands = document.querySelectorAll('.command.selected');
+      if (selectedCommands.length === 0) {
+        showToast('No commands selected');
+        return;
+      }
+      let commandsText = '';
+      selectedCommands.forEach(cmd => {
+        commandsText += cmd.querySelector('pre').textContent + '\n\n';
+      });
+      navigator.clipboard.writeText(commandsText.trim()).then(() => {
+        showToast(`${selectedCommands.length} commands copied to clipboard!`);
+      });
+    }
+
+    // Delete all selected commands
+    function deleteSelectedCommands() {
+      const selectedCommands = document.querySelectorAll('.command.selected');
+      if (selectedCommands.length === 0) {
+        showToast('No commands selected');
+        return;
+      }
+      if (!confirm(`Are you sure you want to delete ${selectedCommands.length} commands?`)) {
+        return;
+      }
+      const commandsToDelete = [];
+      selectedCommands.forEach(cmd => {
+        const idParts = cmd.id.split('-');
+        const category = idParts[1];
+        const index = parseInt(idParts[2]);
+        commandsToDelete.push({ category, index });
+      });
+      commandsToDelete.sort((a, b) => b.index - a.index).forEach(({ category, index }) => {
+        commands[category].splice(index, 1);
+      });
+      saveCommands();
+      showCommands(document.querySelector('#category-navbar button.active').getAttribute('onclick').match(/'([^']+)'/)[1]);
+      showToast(`${commandsToDelete.length} commands deleted`);
+    }
+
+    // Search commands
+    document.getElementById('search-input').addEventListener('input', function (e) {
+      const searchTerm = e.target.value.toLowerCase();
+      if (searchTerm.length < 2) {
+        const activeCategory = document.querySelector('#category-navbar button.active').getAttribute('onclick').match(/'([^']+)'/)[1];
+        showCommands(activeCategory);
+        return;
+      }
+      const commandsSection = document.getElementById("commands-section");
+      commandsSection.innerHTML = '';
+      let foundResults = false;
+      Object.keys(commands).forEach(category => {
+        const filteredCommands = commands[category].filter(cmd =>
+          (cmd.command || '').toLowerCase().includes(searchTerm) ||
+          ((cmd.details || '').toLowerCase().includes(searchTerm))
+        );
+        if (filteredCommands.length > 0) {
+          foundResults = true;
+          commandsSection.innerHTML += createCategoryHTML(category, filteredCommands);
+        }
+      });
+      if (!foundResults) {
+        commandsSection.innerHTML = `
+          <div class="empty-state">
+            <h3>No results</h3>
+            <p>No commands found matching "${searchTerm}"</p>
+          </div>
+        `;
+      }
+    });
+
+    // Show toast notification
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.textContent = message;
+      toast.style.position = 'fixed';
+      toast.style.bottom = '20px';
+      toast.style.left = '50%';
+      toast.style.transform = 'translateX(-50%)';
+      toast.style.backgroundColor = 'var(--primary-color)';
+      toast.style.color = 'white';
+      toast.style.padding = '10px 20px';
+      toast.style.borderRadius = '5px';
+      toast.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+      toast.style.zIndex = '1000';
+      toast.style.animation = 'fadeIn 0.3s, fadeOut 0.3s 2.7s';
+      document.body.appendChild(toast);
+      setTimeout(() => { toast.remove(); }, 3000);
+    }
+
+    // Open Add/Edit Modal
+    function openAddModal() {
+      document.getElementById('modal-title').textContent = 'Add New Command';
+      document.getElementById('command-form').reset();
+      document.getElementById('edit-index').value = '';
+      document.getElementById('command-category').value = 'server-management'; // Default category
+      document.getElementById('command-modal').style.display = 'flex';
+    }
+
+    // Close Modal
+    function closeModal() {
+      document.getElementById('command-modal').style.display = 'none';
+    }
+
+    // Save Command
+    document.getElementById('command-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const category = document.getElementById('command-category').value;
+      const commandText = document.getElementById('command-text').value;
+      const commandDetails = document.getElementById('command-details').value;
+
+      if (!commandText) {
+        showToast('Command text cannot be empty!');
+        return;
+      }
+
+      if (document.getElementById('edit-index').value) {
+        const editIndex = parseInt(document.getElementById('edit-index').value);
+        commands[category][editIndex] = {
+          command: commandText,
+          details: commandDetails || ''
+        };
+        document.getElementById('modal-title').textContent = 'Edit Command';
+      } else {
+        commands[category].push({
+          command: commandText,
+          details: commandDetails || ''
+        });
+      }
+
+      closeModal();
+      showCommands(category);
+      showToast('Command saved!');
+    });
+
+    // Initialize
+    window.onload = function () {
+      showCommands('all');
+      document.getElementById('command-modal').addEventListener('click', function (e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+    };
+  </script>
+</body>
+
+</html>
